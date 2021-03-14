@@ -10,8 +10,10 @@
 			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 			crossorigin="anonymous"
 		/>
+		<link rel="stylesheet" href="./style/main.css" />
 		<title>Les petits plats</title>
 	</head>
+
 	<body>
 		<header class="container mb-5 mt-5">
 			<div class="row justify-content-center mb-5"><img src="img/logo.svg" alt="Logo" /></div>
@@ -37,33 +39,21 @@
 					<input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrédients" />
 					<div class="input-group-append">
 						<button class="btn btn-primary dropdown-toggle mr-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div>
+						<div class="dropdown-menu"><div class="row ingredients"></div></div>
 					</div>
 				</div>
 				<div class="input-group input-group-lg col-lg-3 col-md-12 mb-3">
 					<input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Appareils" />
 					<div class="input-group-append">
 						<button class="btn btn-success dropdown-toggle mr-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div>
+						<div class="dropdown-menu"><div class="row appliance"></div></div>
 					</div>
 				</div>
 				<div class="input-group input-group-lg col-lg-3 col-md-12 mb-3">
 					<input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ustensiles" />
 					<div class="input-group-append">
 						<button class="btn btn-danger dropdown-toggle mr-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div>
+						<div class="dropdown-menu"><div class="row ustensils"></div></div>
 					</div>
 				</div>
 			</div>
@@ -164,5 +154,6 @@
 			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 			crossorigin="anonymous"
 		></script>
+		<script src="./js/index.js" type="Module"></script>
 	</body>
 </html>
