@@ -5,7 +5,12 @@
 .card-img-top {
 	height: 200px;
 }
+.card-body {
+	height: 300px;
+}
 
 .card-text {
 	font-size: 0.8em;
+	height: 225px;
+	overflow: auto;
 }
