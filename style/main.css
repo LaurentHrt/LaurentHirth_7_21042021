@@ -11,6 +11,10 @@
 
 .card-text {
 	font-size: 0.8em;
-	height: 225px;
-	overflow: auto;
+	height: 100%
+}
+
+.recipeCard__text{
+	overflow: hidden;
+	height: 230px;
 }

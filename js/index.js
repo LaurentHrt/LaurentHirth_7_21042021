@@ -1,28 +1,15 @@
-import { recipes } from './recipes.js'
+import { RecipeService } from './RecipeService.js'
 
-let ingredientsList = []
-let applianceList = []
-let ustensilsList = []
+const recipeService = new RecipeService()
 
 function displayDropdowns() {
 	const dropdownIngredient = document.querySelector('.ingredients')
 	const dropdownAppliance = document.querySelector('.appliance')
 	const dropdownUstensils = document.querySelector('.ustensils')
 
-	recipes.forEach((recipe) => {
-		recipe.ingredients.forEach((ingredient) => {
-			ingredientsList.push(ingredient.ingredient)
-		})
-		ustensilsList.push(...recipe.ustensils)
-		applianceList.push(recipe.appliance)
-	})
-
-	ingredientsList.sort()
-	applianceList.sort()
-	ustensilsList.sort()
-	ingredientsList = new Set(ingredientsList)
-	applianceList = new Set(applianceList)
-	ustensilsList = new Set(ustensilsList)
+	const ingredientsList = recipeService.getAllIngredients()
+	const applianceList = recipeService.getAllAppliance()
+	const ustensilsList = recipeService.getAllUstensils()
 
 	ingredientsList.forEach((ingredient) => {
 		const a = document.createElement('a')
@@ -60,8 +47,9 @@ function displayDropdowns() {
 
 function displayRecipes() {
 	const recipeList = document.querySelector('.recipe-list')
+	const recipesList = recipeService.getAllRecipes()
 
-	recipes.forEach((recipe) => {
+	recipesList.forEach((recipe) => {
 		const container = document.createElement('div')
 		const card = document.createElement('div')
 		const cardImg = document.createElement('svg')
@@ -80,7 +68,7 @@ function displayRecipes() {
 		cardTitles.classList.add('row', 'no-gutters')
 		recipeName.classList.add('col-8', 'card-title', 'text-truncate')
 		recipeTime.classList.add('col', 'card-title')
-		cardTexts.classList.add('row', 'no-gutters')
+		cardTexts.classList.add('row', 'recipeCard__text')
 		recipeIngredients.classList.add('col-6', 'card-text', 'font-weight-bold')
 		recipeDescription.classList.add('col-6', 'card-text')
 
