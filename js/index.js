@@ -7,42 +7,28 @@ function displayDropdowns() {
 	const dropdownAppliance = document.querySelector('.appliance')
 	const dropdownUstensils = document.querySelector('.ustensils')
 
-	const ingredientsList = recipeService.getAllIngredients()
-	const applianceList = recipeService.getAllAppliance()
-	const ustensilsList = recipeService.getAllUstensils()
-
-	ingredientsList.forEach((ingredient) => {
-		const a = document.createElement('a')
-		const div = document.createElement('div')
-		div.append(a)
-		a.classList.add('dropdown-item')
-		div.classList.add('col-4')
-		a.href = '#'
-		a.textContent = ingredient
-		dropdownIngredient.append(div)
+	recipeService.getAllIngredients().forEach((ingredient) => {
+		dropdownIngredient.append(getDropdownHtmlBloc(ingredient))
 	})
 
-	applianceList.forEach((appliance) => {
-		const a = document.createElement('a')
-		const div = document.createElement('div')
-		div.append(a)
-		a.classList.add('dropdown-item')
-		div.classList.add('col-4')
-		a.href = '#'
-		a.textContent = appliance
-		dropdownAppliance.append(div)
+	recipeService.getAllAppliance().forEach((appliance) => {
+		dropdownAppliance.append(getDropdownHtmlBloc(appliance))
 	})
 
-	ustensilsList.forEach((ustensil) => {
-		const a = document.createElement('a')
-		const div = document.createElement('div')
-		div.append(a)
-		a.classList.add('dropdown-item')
-		div.classList.add('col-4')
-		a.href = '#'
-		a.textContent = ustensil
-		dropdownUstensils.append(div)
+	recipeService.getAllUstensils().forEach((ustensil) => {
+		dropdownUstensils.append(getDropdownHtmlBloc(ustensil))
 	})
+
+	function getDropdownHtmlBloc(text) {
+        const a = document.createElement('a')
+        const div = document.createElement('div')
+        div.append(a)
+        a.classList.add('dropdown-item')
+        div.classList.add('col-4')
+        a.href = '#'
+        a.textContent = text
+        return div
+    }
 }
 
 function displayRecipes() {
@@ -50,6 +36,10 @@ function displayRecipes() {
 	const recipesList = recipeService.getAllRecipes()
 
 	recipesList.forEach((recipe) => {
+		recipeList.append(getRecipeHtmlBloc(recipe.name, recipe.time, recipe.description, recipe.ingredients))
+	})
+
+	function getRecipeHtmlBloc(name, time, description, ingredients) {
 		const container = document.createElement('div')
 		const card = document.createElement('div')
 		const cardImg = document.createElement('svg')
@@ -72,11 +62,11 @@ function displayRecipes() {
 		recipeIngredients.classList.add('col-6', 'card-text', 'font-weight-bold')
 		recipeDescription.classList.add('col-6', 'card-text')
 
-		recipeName.textContent = recipe.name
-		recipeTime.textContent = '⏱ ' + recipe.time + ' min'
-		recipeDescription.textContent = recipe.description
+		recipeName.textContent = name
+		recipeTime.textContent = '⏱ ' + time + ' min'
+		recipeDescription.textContent = description
 
-		recipe.ingredients.forEach((ingredient) => {
+		ingredients.forEach((ingredient) => {
 			recipeIngredients.append(ingredient.ingredient + (ingredient.quantity ? ' : ' + ingredient.quantity : '') + (ingredient.unit || ''), document.createElement('br'))
 		})
 
@@ -86,7 +76,9 @@ function displayRecipes() {
 		cardTitles.append(recipeName, recipeTime)
 		cardTexts.append(recipeIngredients, recipeDescription)
 		recipeList.append(container)
-	})
+
+		return container
+	}
 }
 
 displayDropdowns()
