@@ -31,7 +31,7 @@ export const recipes = [
 		description:
 			"Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée",
 		appliance: 'Blender',
-		ustensils: ['cuillère à Soupe', 'verres', 'presse citron'],
+		ustensils: ['cuillère à soupe', 'verres', 'presse citron'],
 	},
 	{
 		id: 2,
@@ -465,12 +465,12 @@ export const recipes = [
 			{
 				ingredient: 'Vinaigre de cidre',
 				quantity: 1,
-				unit: 'cuillère à soupe',
+				unit: ' cuillère à soupe',
 			},
 			{
 				ingredient: "Huile d'olive",
 				quantity: 2,
-				unit: 'cuillère à soupe',
+				unit: ' cuillère à soupe',
 			},
 		],
 		time: 40,
@@ -586,7 +586,7 @@ export const recipes = [
 			{
 				ingredient: "Huile d'olives",
 				quantity: 2,
-				unit: 'cuillère à soupe',
+				unit: ' cuillère à soupe',
 			},
 		],
 		time: 45,
@@ -670,7 +670,7 @@ export const recipes = [
 			{
 				ingredient: 'Lait',
 				quantity: 1,
-				unit: 'litres',
+				unit: 'L',
 			},
 			{
 				ingredient: 'Sucre glace',
@@ -967,7 +967,7 @@ export const recipes = [
 			{
 				ingredient: 'Crème fraîche',
 				quantity: 4,
-				unit: 'cuillère à soupe',
+				unit: ' cuillère à soupe',
 			},
 			{
 				ingredient: 'Vermicelles',
@@ -1369,7 +1369,7 @@ export const recipes = [
 		time: 20,
 		description: 'Fouettez les oeufs, le sucre et le lait. tremper les tranches de pain. Le cuire au four pendant environ 10 minutes à 180°. Servir',
 		appliance: 'Four',
-		ustensils: ['fouet', 'bol', 'Cuillère à Soupe'],
+		ustensils: ['fouet', 'bol', 'cuillère à soupe'],
 	},
 	{
 		id: 39,
@@ -1410,7 +1410,7 @@ export const recipes = [
 			{
 				ingredient: 'Eau',
 				quantity: 1,
-				unit: 'Litres',
+				unit: 'L',
 			},
 			{
 				ingredient: 'Citron Vert',
@@ -1531,7 +1531,7 @@ export const recipes = [
 			{
 				ingredient: 'Lait',
 				quantity: 1,
-				unit: 'litres',
+				unit: 'L',
 			},
 			{
 				ingredient: 'Chocolat',
@@ -1618,7 +1618,7 @@ export const recipes = [
 			{
 				ingredient: 'Lait',
 				quantity: 1,
-				unit: 'litre',
+				unit: 'L',
 			},
 			{
 				ingredient: 'Pruneaux',
