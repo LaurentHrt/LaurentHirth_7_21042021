@@ -19,13 +19,7 @@
 			<div class="row justify-content-center mb-5"><img src="img/logo.svg" alt="Logo" /></div>
 			<div class="row">
 				<div class="input-group input-group-lg mb-3 col-12">
-					<input
-						type="text"
-						class="form-control"
-						aria-label="Rechercher un ingrédient, appareil, ustensile ou une recette"
-						aria-describedby="basic-addon2"
-						placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette"
-					/>
+					<input type="text" class="form-control" placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette" />
 					<div class="input-group-append">
 						<button class="btn btn-outline-secondary" type="button">Rechercher</button>
 					</div>
@@ -36,23 +30,23 @@
 
 			<div class="row mb-5">
 				<div class="input-group input-group-lg col-lg-3 col-md-12 mb-3">
-					<input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrédients" />
+					<input type="text" class="form-control" placeholder="Ingrédients" />
 					<div class="input-group-append">
-						<button class="btn btn-primary dropdown-toggle mr-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+						<button class="btn btn-primary dropdown-toggle mr-3" type="button" data-toggle="dropdown"></button>
 						<div class="dropdown-menu"><div class="row ingredients"></div></div>
 					</div>
 				</div>
 				<div class="input-group input-group-lg col-lg-3 col-md-12 mb-3">
-					<input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Appareils" />
+					<input type="text" class="form-control" placeholder="Appareils" />
 					<div class="input-group-append">
-						<button class="btn btn-success dropdown-toggle mr-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+						<button class="btn btn-success dropdown-toggle mr-3" type="button" data-toggle="dropdown"></button>
 						<div class="dropdown-menu"><div class="row appliance"></div></div>
 					</div>
 				</div>
 				<div class="input-group input-group-lg col-lg-3 col-md-12 mb-3">
-					<input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ustensiles" />
+					<input type="text" class="form-control" placeholder="Ustensiles" data-toggle="dropdown" />
 					<div class="input-group-append">
-						<button class="btn btn-danger dropdown-toggle mr-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+						<button class="btn btn-danger dropdown-toggle mr-3" type="button" data-toggle="dropdown"></button>
 						<div class="dropdown-menu"><div class="row ustensils"></div></div>
 					</div>
 				</div>
@@ -62,6 +56,7 @@
 		<main class="container">
 			<div class="row recipe-list"></div>
 		</main>
+
 		<script
 			src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
