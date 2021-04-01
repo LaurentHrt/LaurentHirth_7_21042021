@@ -7,7 +7,7 @@ function displaySelectedTags() {
 	const selectedIngredients = recipeService.getSelectedIngredients()
 	const selectedUstensils = recipeService.getSelectedUstensils()
 	const selectedAppliance = recipeService.getSelectedAppliance()
-	
+
 	selectedTagsDiv.innerHTML = ''
 
 	selectedIngredients.forEach((ingredient) => {
@@ -54,49 +54,63 @@ function displaySelectedTags() {
 		})
 		selectedTagsDiv.append(buttonUstensil)
 	})
-
 }
 
 function displayDropdowns() {
 	const dropdownIngredient = document.querySelector('.ingredients')
 	const dropdownAppliance = document.querySelector('.appliance')
 	const dropdownUstensils = document.querySelector('.ustensils')
+	const ingredientInput = document.querySelector('.ingredientInput')
+	const applianceInput = document.querySelector('.applianceInput')
+	const ustensilInput = document.querySelector('.ustensilInput')
 
 	dropdownIngredient.innerHTML = ''
 	dropdownAppliance.innerHTML = ''
 	dropdownUstensils.innerHTML = ''
 
-	recipeService.getAllIngredients().forEach((ingredient) => {
+	recipeService.findIngredients(ingredientInput.value).forEach((ingredient) => {
 		const htmlBloc = getDropdownHtmlBloc(ingredient)
-		htmlBloc.addEventListener('click', () => {
-			recipeService.addSelectedIngredient(ingredient)
-			displaySelectedTags()
-			displayDropdowns()
-			displayRecipes()
-		})
+		htmlBloc.addEventListener('click', () => onClickIngredient(ingredient))
 		dropdownIngredient.append(htmlBloc)
 	})
 
-	recipeService.getAllAppliance().forEach((appliance) => {
+	recipeService.findAppliance(applianceInput.value).forEach((appliance) => {
 		const htmlBloc = getDropdownHtmlBloc(appliance)
-		htmlBloc.addEventListener('click', () => {
-			recipeService.addSelectedAppliance(appliance)
-			displaySelectedTags()
-			displayDropdowns()
-			displayRecipes()
-		})
+		htmlBloc.addEventListener('click', () => onClickAppliance(appliance))
 		dropdownAppliance.append(htmlBloc)
 	})
 
-	recipeService.getAllUstensils().forEach((ustensil) => {
+	recipeService.findUstensils(ustensilInput.value).forEach((ustensil) => {
 		const htmlBloc = getDropdownHtmlBloc(ustensil)
-		htmlBloc.addEventListener('click', () => {
-			recipeService.addSelectedUstensil(ustensil)
-			displaySelectedTags()
-			displayDropdowns()
-			displayRecipes()
-		})
+		htmlBloc.addEventListener('click', () => onClickUstensil(ustensil))
 		dropdownUstensils.append(htmlBloc)
+	})
+
+	ingredientInput.addEventListener('input', (e) => {
+		dropdownIngredient.innerHTML = ''
+		recipeService.findIngredients(e.target.value).forEach((ingredient) => {
+			const htmlBloc = getDropdownHtmlBloc(ingredient)
+			htmlBloc.addEventListener('click', () => onClickIngredient(ingredient))
+			dropdownIngredient.append(htmlBloc)
+		})
+	})
+
+	applianceInput.addEventListener('input', (e) => {
+		dropdownAppliance.innerHTML = ''
+		recipeService.findAppliance(e.target.value).forEach((appliance) => {
+			const htmlBloc = getDropdownHtmlBloc(appliance)
+			htmlBloc.addEventListener('click', () => onClickAppliance(appliance))
+			dropdownAppliance.append(htmlBloc)
+		})
+	})
+
+	ustensilInput.addEventListener('input', (e) => {
+		dropdownUstensils.innerHTML = ''
+		recipeService.findUstensils(e.target.value).forEach((ustensil) => {
+			const htmlBloc = getDropdownHtmlBloc(ustensil)
+			htmlBloc.addEventListener('click', () => onClickUstensil(ustensil))
+			dropdownUstensils.append(htmlBloc)
+		})
 	})
 
 	function getDropdownHtmlBloc(text) {
@@ -107,12 +121,31 @@ function displayDropdowns() {
 		a.classList.add('dropdown-item')
 		a.textContent = text
 
-		a.addEventListener('click', (e) => {
-			e.preventDefault()
-		})
+		a.addEventListener('click', (e) => e.preventDefault())
 
 		div.append(a)
 		return div
+	}
+
+	function onClickIngredient(ingredient) {
+		recipeService.addSelectedIngredient(ingredient)
+		displaySelectedTags()
+		displayDropdowns()
+		displayRecipes()
+	}
+
+	function onClickAppliance(appliance) {
+		recipeService.addSelectedAppliance(appliance)
+		displaySelectedTags()
+		displayDropdowns()
+		displayRecipes()
+	}
+
+	function onClickUstensil(ustensil) {
+		recipeService.addSelectedUstensil(ustensil)
+		displaySelectedTags()
+		displayDropdowns()
+		displayRecipes()
 	}
 }
 

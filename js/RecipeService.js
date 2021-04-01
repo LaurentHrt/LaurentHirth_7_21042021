@@ -86,16 +86,16 @@ export class RecipeService {
 		return []
 	}
 
-	findIngredients() {
-		return []
+	findIngredients(value) {
+		return this.allIngredient.filter((ingredient) => ingredient.toLowerCase().startsWith(value.toLowerCase()))
 	}
 
-	findAppliance() {
-		return []
+	findAppliance(value) {
+		return this.allAppliance.filter((appliance) => appliance.toLowerCase().startsWith(value.toLowerCase()))
 	}
 
-	findUstenstils() {
-		return []
+	findUstensils(value) {
+		return this.allUstensils.filter((ustensil) => ustensil.toLowerCase().startsWith(value.toLowerCase()))
 	}
 
 	_filterRecipes() {
