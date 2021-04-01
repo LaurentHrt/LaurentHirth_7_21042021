@@ -20,6 +20,7 @@ function displaySelectedTags() {
 			recipeService.removeSelectedIngredient(ingredient)
 			displaySelectedTags()
 			displayDropdowns()
+			displayRecipes()
 		})
 		selectedTagsDiv.append(buttonIngredient)
 	})
@@ -34,6 +35,7 @@ function displaySelectedTags() {
 			recipeService.removeSelectedAppliance(appliance)
 			displaySelectedTags()
 			displayDropdowns()
+			displayRecipes()
 		})
 		selectedTagsDiv.append(buttonAppliance)
 	})
@@ -48,6 +50,7 @@ function displaySelectedTags() {
 			recipeService.removeSelectedUstensil(ustensil)
 			displaySelectedTags()
 			displayDropdowns()
+			displayRecipes()
 		})
 		selectedTagsDiv.append(buttonUstensil)
 	})
@@ -69,6 +72,7 @@ function displayDropdowns() {
 			recipeService.addSelectedIngredient(ingredient)
 			displaySelectedTags()
 			displayDropdowns()
+			displayRecipes()
 		})
 		dropdownIngredient.append(htmlBloc)
 	})
@@ -79,6 +83,7 @@ function displayDropdowns() {
 			recipeService.addSelectedAppliance(appliance)
 			displaySelectedTags()
 			displayDropdowns()
+			displayRecipes()
 		})
 		dropdownAppliance.append(htmlBloc)
 	})
@@ -89,6 +94,7 @@ function displayDropdowns() {
 			recipeService.addSelectedUstensil(ustensil)
 			displaySelectedTags()
 			displayDropdowns()
+			displayRecipes()
 		})
 		dropdownUstensils.append(htmlBloc)
 	})
@@ -112,9 +118,11 @@ function displayDropdowns() {
 
 function displayRecipes() {
 	const recipeList = document.querySelector('.recipe-list')
-	const recipesList = recipeService.getAllRecipes()
+	const displayedRecipesList = recipeService.getFilteredRecipes()
 
-	recipesList.forEach((recipe) => {
+	recipeList.innerHTML = ''
+
+	displayedRecipesList.forEach((recipe) => {
 		recipeList.innerHTML += `<div class="col-xl-4 col-lg-6 col-md-6">
 			<div class="card mb-4 shadow-sm">
 				<svg class="card-img-top bg-secondary"></svg>
