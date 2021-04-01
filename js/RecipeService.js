@@ -87,15 +87,15 @@ export class RecipeService {
 	}
 
 	findIngredients(value) {
-		return this.allIngredient.filter((ingredient) => ingredient.toLowerCase().startsWith(value.toLowerCase()))
+		return this.allIngredient.filter((ingredient) => ingredient.toLowerCase().includes(value.toLowerCase()))
 	}
 
 	findAppliance(value) {
-		return this.allAppliance.filter((appliance) => appliance.toLowerCase().startsWith(value.toLowerCase()))
+		return this.allAppliance.filter((appliance) => appliance.toLowerCase().includes(value.toLowerCase()))
 	}
 
 	findUstensils(value) {
-		return this.allUstensils.filter((ustensil) => ustensil.toLowerCase().startsWith(value.toLowerCase()))
+		return this.allUstensils.filter((ustensil) => ustensil.toLowerCase().includes(value.toLowerCase()))
 	}
 
 	_filterRecipes() {

@@ -18,3 +18,7 @@
 	overflow: hidden;
 	height: 230px;
 }
+
+.dropdown-item{
+	text-transform: lowercase;
+}
