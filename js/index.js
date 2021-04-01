@@ -12,9 +12,9 @@ function displaySelectedTags() {
 
 	selectedIngredients.forEach((ingredient) => {
 		const buttonIngredient = document.createElement('button')
-		buttonIngredient.classList.add('btn', 'btn-primary', 'btn-sm')
+		buttonIngredient.classList.add('btn', 'btn-primary')
 		buttonIngredient.setAttribute('type', 'button')
-		buttonIngredient.textContent = ingredient + ' ❌'
+		buttonIngredient.textContent = ingredient + ' ✖'
 		buttonIngredient.addEventListener('click', (e) => {
 			e.preventDefault()
 			recipeService.removeSelectedIngredient(ingredient)
@@ -27,9 +27,9 @@ function displaySelectedTags() {
 
 	selectedAppliance.forEach((appliance) => {
 		const buttonAppliance = document.createElement('button')
-		buttonAppliance.classList.add('btn', 'btn-success', 'btn-sm')
+		buttonAppliance.classList.add('btn', 'btn-success')
 		buttonAppliance.setAttribute('type', 'button')
-		buttonAppliance.textContent = appliance + ' ❌'
+		buttonAppliance.textContent = appliance + ' ✖'
 		buttonAppliance.addEventListener('click', (e) => {
 			e.preventDefault()
 			recipeService.removeSelectedAppliance(appliance)
@@ -42,9 +42,9 @@ function displaySelectedTags() {
 
 	selectedUstensils.forEach((ustensil) => {
 		const buttonUstensil = document.createElement('button')
-		buttonUstensil.classList.add('btn', 'btn-danger', 'btn-sm')
+		buttonUstensil.classList.add('btn', 'btn-danger')
 		buttonUstensil.setAttribute('type', 'button')
-		buttonUstensil.textContent = ustensil + ' ❌'
+		buttonUstensil.textContent = ustensil + ' ✖'
 		buttonUstensil.addEventListener('click', (e) => {
 			e.preventDefault()
 			recipeService.removeSelectedUstensil(ustensil)

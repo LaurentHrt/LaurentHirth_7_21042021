@@ -16,7 +16,7 @@ export const recipes = [
 			{
 				ingredient: 'Crème de coco',
 				quantity: 2,
-				unit: 'cuillères à soupe',
+				unit: ' cuillères à soupe',
 			},
 			{
 				ingredient: 'Sucre',
@@ -169,7 +169,7 @@ export const recipes = [
 			{
 				ingredient: 'Crème fraîche',
 				quantity: 2,
-				unit: 'cuillères à soupe',
+				unit: ' cuillères à soupe',
 			},
 			{
 				ingredient: 'Gruyère râpé',
@@ -218,7 +218,7 @@ export const recipes = [
 			{
 				ingredient: 'Sucre vanillé',
 				quantity: 1,
-				unit: 'sachets',
+				unit: ' sachets',
 			},
 		],
 		time: 50,
@@ -353,7 +353,7 @@ export const recipes = [
 			{
 				ingredient: 'Jambon fumé',
 				quantity: 2,
-				unit: 'tranches',
+				unit: ' tranches',
 			},
 			{
 				ingredient: 'Oignon',
@@ -390,7 +390,7 @@ export const recipes = [
 			{
 				ingredient: 'Jambon de parme',
 				quantity: 4,
-				unit: 'tranches',
+				unit: ' tranches',
 			},
 			{
 				ingredient: 'Pomme',
@@ -429,12 +429,12 @@ export const recipes = [
 			{
 				ingredient: 'Sucre vanillé',
 				quantity: 6,
-				unit: 'sachets',
+				unit: ' sachets',
 			},
 			{
 				ingredient: 'Eau',
 				quantity: '0.5',
-				unit: 'tasses',
+				unit: ' tasses',
 			},
 		],
 		time: 40,
@@ -612,7 +612,7 @@ export const recipes = [
 			{
 				ingredient: 'Jus de citron',
 				quantity: 1,
-				unit: 'cuillères à soupe',
+				unit: ' cuillères à soupe',
 			},
 			{
 				ingredient: 'Glaçons',
@@ -716,7 +716,7 @@ export const recipes = [
 			{
 				ingredient: "Huile d'olive",
 				quantity: 1,
-				unit: 'cuillères à soupe',
+				unit: ' cuillères à soupe',
 			},
 		],
 		time: 30,
@@ -757,7 +757,7 @@ export const recipes = [
 			{
 				ingredient: 'Crème Fraiche',
 				quantity: 1,
-				unit: 'cuillères à soupe',
+				unit: ' cuillères à soupe',
 			},
 		],
 		time: 30,
@@ -874,7 +874,7 @@ export const recipes = [
 			{
 				ingredient: 'Mayonnaise',
 				quantity: 2,
-				unit: 'cuillères à soupe',
+				unit: ' cuillères à soupe',
 			},
 		],
 		time: 40,
@@ -942,7 +942,7 @@ export const recipes = [
 			{
 				ingredient: 'Ail',
 				quantity: 1,
-				unit: 'gousses',
+				unit: ' gousses',
 			},
 		],
 		time: 25,
@@ -972,7 +972,7 @@ export const recipes = [
 			{
 				ingredient: 'Vermicelles',
 				quantity: 1,
-				unit: 'verres',
+				unit: ' verres',
 			},
 			{
 				ingredient: 'Beurre salé',
@@ -1030,12 +1030,12 @@ export const recipes = [
 			{
 				ingredient: 'Pois chiches',
 				quantity: 1,
-				unit: 'boites',
+				unit: ' boites',
 			},
 			{
 				ingredient: 'Ail',
 				quantity: 1,
-				unit: 'gousses',
+				unit: ' gousses',
 			},
 			{
 				ingredient: 'Citron',
@@ -1070,7 +1070,7 @@ export const recipes = [
 			{
 				ingredient: 'Ail',
 				quantity: 2,
-				unit: 'gousses',
+				unit: ' gousses',
 			},
 		],
 		time: 60,
@@ -1122,17 +1122,17 @@ export const recipes = [
 			{
 				ingredient: 'Pain de mie',
 				quantity: 8,
-				unit: 'tranches',
+				unit: ' tranches',
 			},
 			{
 				ingredient: 'Blanc de dinde',
 				quantity: 4,
-				unit: 'tranches',
+				unit: ' tranches',
 			},
 			{
 				ingredient: 'Emmental',
 				quantity: 8,
-				unit: 'tranches',
+				unit: ' tranches',
 			},
 			{
 				ingredient: 'Gruyère',
@@ -1147,7 +1147,7 @@ export const recipes = [
 			{
 				ingredient: 'Noix de muscade',
 				quantity: 1,
-				unit: 'pincées',
+				unit: ' pincées',
 			},
 		],
 		time: 20,
@@ -1164,12 +1164,12 @@ export const recipes = [
 			{
 				ingredient: 'Pain de mie',
 				quantity: 8,
-				unit: 'tranches',
+				unit: ' tranches',
 			},
 			{
 				ingredient: 'Saumon Fumé',
 				quantity: 4,
-				unit: 'tranches',
+				unit: ' tranches',
 			},
 			{
 				ingredient: 'Feuilles de laitue',
@@ -1178,12 +1178,12 @@ export const recipes = [
 			{
 				ingredient: 'Fromage blanc',
 				quantity: 4,
-				unit: 'cuillères à soupe',
+				unit: ' cuillères à soupe',
 			},
 			{
 				ingredient: 'Jus de citron',
 				quantity: 1,
-				unit: 'cuillères à soupe',
+				unit: ' cuillères à soupe',
 			},
 		],
 		time: 5,
@@ -1242,17 +1242,17 @@ export const recipes = [
 			{
 				ingredient: 'Crème fraîche',
 				quantity: 2,
-				unit: 'cuillères à soupe',
+				unit: ' cuillères à soupe',
 			},
 			{
 				ingredient: 'Cumin',
 				quantity: 1,
-				unit: 'cuillères à café',
+				unit: ' cuillères à café',
 			},
 			{
 				ingredient: 'Noix de muscade',
 				quantity: 1,
-				unit: 'pincées',
+				unit: ' pincées',
 			},
 		],
 		time: 25,
@@ -1282,7 +1282,7 @@ export const recipes = [
 			{
 				ingredient: 'Lasagnes',
 				quantity: 5,
-				unit: 'feuilles',
+				unit: ' feuilles',
 			},
 			{
 				ingredient: 'Gruyère',
@@ -1292,7 +1292,7 @@ export const recipes = [
 			{
 				ingredient: 'Maïzena',
 				quantity: 1,
-				unit: 'cuillères à soupe',
+				unit: ' cuillères à soupe',
 			},
 		],
 		time: 35,
@@ -1349,7 +1349,7 @@ export const recipes = [
 			{
 				ingredient: 'Pain',
 				quantity: 6,
-				unit: 'tranches',
+				unit: ' tranches',
 			},
 			{
 				ingredient: 'Lait',
@@ -1419,12 +1419,12 @@ export const recipes = [
 			{
 				ingredient: 'Sucre en poudre',
 				quantity: 4,
-				unit: 'cuillères à café',
+				unit: ' cuillères à café',
 			},
 			{
 				ingredient: 'Bicarbonate',
 				quantity: 1,
-				unit: 'cuillères à café',
+				unit: ' cuillères à café',
 			},
 		],
 		time: 10,
@@ -1450,7 +1450,7 @@ export const recipes = [
 			{
 				ingredient: 'Sucre vanillé',
 				quantity: 1,
-				unit: 'sachets',
+				unit: ' sachets',
 			},
 		],
 		time: 20,
@@ -1476,7 +1476,7 @@ export const recipes = [
 			{
 				ingredient: 'Poires au jus',
 				quantity: 0.5,
-				unit: 'boites',
+				unit: ' boites',
 			},
 			{
 				ingredient: 'Boudoirs',
@@ -1609,7 +1609,7 @@ export const recipes = [
 			{
 				ingredient: 'Sucre vanillé',
 				quantity: 1,
-				unit: 'sachets',
+				unit: ' sachets',
 			},
 			{
 				ingredient: 'Oeuf',
@@ -1675,17 +1675,17 @@ export const recipes = [
 			{
 				ingredient: 'Tomates pelées',
 				quantity: 1,
-				unit: 'boites',
+				unit: ' boites',
 			},
 			{
 				ingredient: 'Lardons',
 				quantity: 1,
-				unit: 'barquettes',
+				unit: ' barquettes',
 			},
 			{
 				ingredient: 'Champignons de paris',
 				quantity: 1,
-				unit: 'boites',
+				unit: ' boites',
 			},
 			{
 				ingredient: 'Gruyère',
@@ -1719,12 +1719,12 @@ export const recipes = [
 			{
 				ingredient: 'Ananas',
 				quantity: 4,
-				unit: 'tranches',
+				unit: ' tranches',
 			},
 			{
 				ingredient: 'Miel',
 				quantity: 2,
-				unit: 'cuillères à soupe',
+				unit: ' cuillères à soupe',
 			},
 		],
 		time: 0,

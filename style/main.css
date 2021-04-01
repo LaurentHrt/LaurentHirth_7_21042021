@@ -22,3 +22,8 @@
 .dropdown-item{
 	text-transform: lowercase;
 }
+
+.tags button{
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
