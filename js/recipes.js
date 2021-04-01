@@ -370,7 +370,7 @@ export const recipes = [
 		description:
 			"Commencer par cuire les pommes de terre dans l'eau bouillante. Puis epluchez les et coupez les en rondelles. Emincer les oignons puis les faire dorer dans du beurre. Ajouter le jambon fumé coupé en en morceaux ainsi que les pommes de terres. Salez, poivrez à votre gout ( et celui de vos convives ) Laissez cuisiner durant environ 10 minutes puis ajouter le vin blanc. Après 5 minutes, mettre le tout dans un plat à gratin. Coupez le rebelochon, soit en tranches, soit le couper en 2 dans le sens de l'épaisseur et recouvrir les pommes de terre. Cuire au four (environ 220°) durant 25 minutes. C'est prêt !",
 		appliance: 'Four',
-		ustensils: ['plat à gratin', 'couteau', 'Économe'],
+		ustensils: ['plat à gratin', 'couteau', 'économe'],
 	},
 	{
 		id: 11,
@@ -441,7 +441,7 @@ export const recipes = [
 		description:
 			"Éplucher les fruits et les couper en morceaux, les mettre dans une casserole en ajoutant l'eau et le sucre vanillé. Laisser cuire 15 minutes en remuant régulièrement.",
 		appliance: 'Casserole',
-		ustensils: ['couteau', 'Économe'],
+		ustensils: ['couteau', 'économe'],
 	},
 	{
 		id: 13,
@@ -762,9 +762,9 @@ export const recipes = [
 		],
 		time: 30,
 		description:
-			'Cuisiner la viande hachée dans une poelle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraiche à la viande hachée. Serivir.',
+			'Cuisiner la viande hachée dans une poelle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraiche à la viande hachée. Servir.',
 		appliance: 'Casserole',
-		ustensils: ['Cuillère en bois', 'louche', 'couteau'],
+		ustensils: ['cuillère en bois', 'louche', 'couteau'],
 	},
 	{
 		id: 22,
@@ -1112,7 +1112,7 @@ export const recipes = [
 		description:
 			"Découper en cubes les carottes et pommes de terre. Faire revenir dans du beurre. Ajouter les lardons, une fois les lardons dorés, ajouter un grand verre d'eau. Ajouter les petit poids et les haricots verts ( tous deux pré cuits ). Ajouter Sel, poivre, thyms et laurier",
 		appliance: 'Poële',
-		ustensils: ['Couteau', 'Économe'],
+		ustensils: ['couteau', 'économe'],
 	},
 	{
 		id: 32,
@@ -1219,7 +1219,7 @@ export const recipes = [
 		description:
 			"Eplucher les patates douces et coupez les en morceaux. Les faire cuire durant 20 minute dans une casserole d'eau bouillante. Passer au mixer en ajoutant la crème et l'huile d'olive à son gout. Salez, poivrez. Pressez l'orange et ajouter le jus à l'ensemble. Servir.",
 		appliance: 'Mixeur',
-		ustensils: ['couteau', 'Économe', 'cuillère en bois'],
+		ustensils: ['couteau', 'économe', 'cuillère en bois'],
 	},
 	{
 		id: 35,
@@ -1659,7 +1659,7 @@ export const recipes = [
 			},
 		],
 		time: 5,
-		description: 'Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraiche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir',
+		description: 'Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraiche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir.',
 		appliance: 'Saladier',
 		ustensils: ['fouet', 'verres', 'cuillère en bois'],
 	},
