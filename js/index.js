@@ -7,7 +7,7 @@ function displaySelectedTags() {
 	const selectedIngredients = recipeService.getSelectedIngredients()
 	const selectedUstensils = recipeService.getSelectedUstensils()
 	const selectedAppliance = recipeService.getSelectedAppliance()
-	
+
 	selectedTagsDiv.innerHTML = ''
 
 	selectedIngredients.forEach((ingredient) => {
@@ -54,13 +54,15 @@ function displaySelectedTags() {
 		})
 		selectedTagsDiv.append(buttonUstensil)
 	})
-
 }
 
 function displayDropdowns() {
 	const dropdownIngredient = document.querySelector('.ingredients')
 	const dropdownAppliance = document.querySelector('.appliance')
 	const dropdownUstensils = document.querySelector('.ustensils')
+	const ingredientInput = document.querySelector('.ingredientInput')
+	const applianceInput = document.querySelector('.applianceInput')
+	const ustensilInput = document.querySelector('.ustensilInput')
 
 	dropdownIngredient.innerHTML = ''
 	dropdownAppliance.innerHTML = ''
@@ -99,6 +101,51 @@ function displayDropdowns() {
 		dropdownUstensils.append(htmlBloc)
 	})
 
+	ingredientInput.addEventListener('input', (e) => {
+		const filteredIngredient = recipeService.findIngredients(e.target.value)
+		dropdownIngredient.innerHTML = ''
+
+		filteredIngredient.forEach((ingredient) => {
+			const htmlBloc = getDropdownHtmlBloc(ingredient)
+
+			htmlBloc.addEventListener('click', () => {
+				onClickIngredient(ingredient)
+			})
+
+			dropdownIngredient.append(htmlBloc)
+		})
+	})
+
+	applianceInput.addEventListener('input', (e) => {
+		const filteredAppliance = recipeService.findAppliance(e.target.value)
+		dropdownAppliance.innerHTML = ''
+
+		filteredAppliance.forEach((appliance) => {
+			const htmlBloc = getDropdownHtmlBloc(appliance)
+
+			htmlBloc.addEventListener('click', () => {
+				onClickAppliance(appliance)
+			})
+
+			dropdownAppliance.append(htmlBloc)
+		})
+	})
+
+	ustensilInput.addEventListener('input', (e) => {
+		const filteredUstensil = recipeService.findUstensils(e.target.value)
+		dropdownUstensils.innerHTML = ''
+
+		filteredUstensil.forEach((ustensil) => {
+			const htmlBloc = getDropdownHtmlBloc(ustensil)
+
+			htmlBloc.addEventListener('click', () => {
+				onClickUstensil(ustensil)
+			})
+
+			dropdownUstensils.append(htmlBloc)
+		})
+	})
+
 	function getDropdownHtmlBloc(text) {
 		const a = document.createElement('a')
 		const div = document.createElement('div')
@@ -113,6 +160,27 @@ function displayDropdowns() {
 
 		div.append(a)
 		return div
+	}
+
+	function onClickIngredient(ingredient) {
+		recipeService.addSelectedIngredient(ingredient)
+		displaySelectedTags()
+		displayDropdowns()
+		displayRecipes()
+	}
+
+	function onClickAppliance(appliance) {
+		recipeService.addSelectedAppliance(appliance)
+		displaySelectedTags()
+		displayDropdowns()
+		displayRecipes()
+	}
+
+	function onClickUstensil(ustensil) {
+		recipeService.addSelectedUstensil(ustensil)
+		displaySelectedTags()
+		displayDropdowns()
+		displayRecipes()
 	}
 }
 
