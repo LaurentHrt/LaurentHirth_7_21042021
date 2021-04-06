@@ -258,7 +258,7 @@ export const recipes = [
 		],
 		time: 50,
 		description:
-			"Etaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la crême liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur ",
+			"Etaler la pâte dans les moules à tartelette. Faire cuire la pâte 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la crême liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pâte sur les tartelettes. Couper les fraises en 2 et les positionner sur ",
 		appliance: 'Four',
 		ustensils: ['moule à tartelettes (6)', 'casserole'],
 	},
@@ -591,7 +591,7 @@ export const recipes = [
 		],
 		time: 45,
 		description:
-			"Faire cuire les pâtes si vous n'avez pas de pennes des coquillettes peuvent faire l'affaire. Découper les tomates en petits morceaux, soit en tranches soit en dés. Coupez le basilic en petites morceaux et mélangez le aux tomates.  Coupez la mozzarella en tranche. Préchauffez le four à 200°. Alternez entre couches de pattes et couches de tomates, terminez par une couche de pates et recouvrir du fromage. Laisser au four 30 minutes et régalez vous ! Une recette simple qui fera plaisir au petits comme aux grands.",
+			"Faire cuire les pâtes si vous n'avez pas de pennes des coquillettes peuvent faire l'affaire. Découper les tomates en petits morceaux, soit en tranches soit en dés. Coupez le basilic en petites morceaux et mélangez le aux tomates.  Coupez la mozzarella en tranche. Préchauffez le four à 200°. Alternez entre couches de pattes et couches de tomates, terminez par une couche de pâtes et recouvrir du fromage. Laisser au four 30 minutes et régalez vous ! Une recette simple qui fera plaisir au petits comme aux grands.",
 		appliance: 'Four',
 		ustensils: ['plat à gratin', 'couteau', 'râpe à fromage'],
 	},
@@ -690,7 +690,7 @@ export const recipes = [
 	},
 	{
 		id: 20,
-		name: 'Pates Carbonara',
+		name: 'Pâtes Carbonara',
 		servings: 5,
 		ingredients: [
 			{
@@ -721,7 +721,7 @@ export const recipes = [
 		],
 		time: 30,
 		description:
-			"Faire cuire les pates comme indiqué sur le paquet. Dorer les lardons dans une sauteuse avec l'huile d'olive. Ajouter la crême fraiche et baisser le feu au minimum. Quand les Tagliatelles sont prêtes les mettre dans la sauteuse et bien mélanger le tout en ajoutant le jaune d'oeuf. Servir et ajouter le parmesan râpé.",
+			"Faire cuire les pâtes comme indiqué sur le paquet. Dorer les lardons dans une sauteuse avec l'huile d'olive. Ajouter la crême fraiche et baisser le feu au minimum. Quand les Tagliatelles sont prêtes les mettre dans la sauteuse et bien mélanger le tout en ajoutant le jaune d'oeuf. Servir et ajouter le parmesan râpé.",
 		appliance: 'Sauteuse',
 		ustensils: ['râpe à fromage', 'cuillère en bois'],
 	},
@@ -762,7 +762,7 @@ export const recipes = [
 		],
 		time: 30,
 		description:
-			'Cuisiner la viande hachée dans une poêle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraiche à la viande hachée. Servir.',
+			'Cuisiner la viande hachée dans une poêle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pâtes le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pâtes sont cuites, ajouter la crème fraiche à la viande hachée. Servir.',
 		appliance: 'Casserole',
 		ustensils: ['cuillère en bois', 'louche', 'couteau'],
 	},
@@ -839,7 +839,7 @@ export const recipes = [
 		],
 		time: 60,
 		description:
-			"Etaler la pate dans un moule et la piquer.Parsemer de beurre. Faire chauffer les lardon dans une poêle. Battre les oeufs en ajoutant la crème fraîche et le lait. Finalement ajouter les lardons, salez poivrez à votre gout. Verser l'ensemble sur la pâte. Cuire environ 50 minutes.",
+			"Etaler la pâte dans un moule et la piquer.Parsemer de beurre. Faire chauffer les lardon dans une poêle. Battre les oeufs en ajoutant la crème fraîche et le lait. Finalement ajouter les lardons, salez poivrez à votre gout. Verser l'ensemble sur la pâte. Cuire environ 50 minutes.",
 		appliance: 'Four',
 		ustensils: ['moule à gateaux', 'rouleau à patisserie', 'fouet'],
 	},
@@ -879,7 +879,7 @@ export const recipes = [
 		],
 		time: 40,
 		description:
-			'Découper le concombre et les tomates en dés, les mettre dans un saladier avec le mais et les miettes de poisson, ajouter les pates. Ajouter la mayonnaise. Mélanger le tout et servir frais.',
+			'Découper le concombre et les tomates en dés, les mettre dans un saladier avec le mais et les miettes de poisson, ajouter les pâtes. Ajouter la mayonnaise. Mélanger le tout et servir frais.',
 		appliance: 'Saladier',
 		ustensils: ['couteau', 'cuillère en bois'],
 	},
@@ -1398,7 +1398,7 @@ export const recipes = [
 		],
 		time: 40,
 		description:
-			'Découper les pommes en dé. Mélanger dans un saladier la farine, le sucre et le beurre. Bien mélanger. Beurrer le moule et ajouter les pommes. Par dessus placez la pate que vous avez obtenu. Cuire 20 minutes au four',
+			'Découper les pommes en dé. Mélanger dans un saladier la farine, le sucre et le beurre. Bien mélanger. Beurrer le moule et ajouter les pommes. Par dessus placez la pâte que vous avez obtenu. Cuire 20 minutes au four',
 		appliance: 'Four',
 		ustensils: ['saladier', 'couteau', 'fouet'],
 	},
@@ -1519,7 +1519,7 @@ export const recipes = [
 		],
 		time: 50,
 		description:
-			'Préchauffez le fours à 200°. Etaler la pate. La mettre dans un moule. Battre les oeufs avec le sucre. Ajouter le jus de citron et le beurre. Verser le tout sur la pate. Au four 30 minutes. Bon appetit ',
+			'Préchauffez le fours à 200°. Etaler la pâte. La mettre dans un moule. Battre les oeufs avec le sucre. Ajouter le jus de citron et le beurre. Verser le tout sur la pâte. Au four 30 minutes. Bon appetit ',
 		appliance: 'Four',
 		ustensils: ['rouleau à patisserie', 'moule à tarte', 'presse citron'],
 	},
@@ -1695,7 +1695,7 @@ export const recipes = [
 		],
 		time: 40,
 		description:
-			'Étaler la pate a pizza. Ecraser les tomates pelées, les étaler sur la pâte, ajouter les lardons et les champignons. Ajouter le gruyère eet passer au four à 220° durant 20 minutes',
+			'Étaler la pâte a pizza. Ecraser les tomates pelées, les étaler sur la pâte, ajouter les lardons et les champignons. Ajouter le gruyère eet passer au four à 220° durant 20 minutes',
 		appliance: 'Four',
 		ustensils: ['rouleau à patisserie', 'râpe à fromage', 'couteau'],
 	},
@@ -1764,7 +1764,7 @@ export const recipes = [
 		],
 		time: 60,
 		description:
-			"Préparer la frangipane : Mélanger le sucre la poudre d'amander, le beurre et les oeufs. Etaler la moitier de la pate feuilleté et mettre dans un moule à tarte. Garnir de frangipane et recouvrir du reste de pate feuilletée. Mettre au four 30 minutes",
+			"Préparer la frangipane : Mélanger le sucre la poudre d'amander, le beurre et les oeufs. Etaler la moitier de la pâte feuilleté et mettre dans un moule à tarte. Garnir de frangipane et recouvrir du reste de pâte feuilletée. Mettre au four 30 minutes",
 		appliance: 'Four',
 		ustensils: ['rouleau à patisserie', 'fouet'],
 	},

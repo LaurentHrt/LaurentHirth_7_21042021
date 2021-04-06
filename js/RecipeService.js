@@ -10,8 +10,10 @@ export class RecipeService {
 		this.selectedIngredients = []
 		this.selectedUstensils = []
 		this.selectedAppliance = []
+		this.textFilter = ''
 	}
 
+	// --- Get methods
 	getAllRecipes() {
 		return this.allRecipes
 	}
@@ -31,22 +33,37 @@ export class RecipeService {
 		return this.allUstensils
 	}
 
+	getSelectedIngredients() {
+		return this.selectedIngredients
+	}
+
+	getSelectedUstensils() {
+		return this.selectedUstensils
+	}
+
+	getSelectedAppliance() {
+		return this.selectedAppliance
+	}
+
+	// --- Add & Remove methods
 	addSelectedIngredient(ingredient) {
 		if (this.allIngredient.indexOf(ingredient) != -1) {
 			this.selectedIngredients.push(...this.allIngredient.splice(this.allIngredient.indexOf(ingredient), 1))
-			this._filterRecipes()
+			this.filterRecipes()
 		}
 	}
+
 	addSelectedUstensil(ustensil) {
 		if (this.allUstensils.indexOf(ustensil) != -1) {
 			this.selectedUstensils.push(...this.allUstensils.splice(this.allUstensils.indexOf(ustensil), 1))
-			this._filterRecipes()
+			this.filterRecipes()
 		}
 	}
+
 	addSelectedAppliance(appliance) {
 		if (this.allAppliance.indexOf(appliance) != -1) {
 			this.selectedAppliance.push(...this.allAppliance.splice(this.allAppliance.indexOf(appliance), 1))
-			this._filterRecipes()
+			this.filterRecipes()
 		}
 	}
 
@@ -54,59 +71,76 @@ export class RecipeService {
 		if (this.selectedIngredients.indexOf(ingredient) != -1) {
 			this.allIngredient.push(...this.selectedIngredients.splice(this.selectedIngredients.indexOf(ingredient), 1))
 			this.allIngredient.sort()
-			this._filterRecipes()
+			this.filterRecipes()
 		}
 	}
+
 	removeSelectedUstensil(ustensil) {
 		if (this.selectedUstensils.indexOf(ustensil) != -1) {
 			this.allUstensils.push(...this.selectedUstensils.splice(this.selectedUstensils.indexOf(ustensil), 1))
 			this.allUstensils.sort()
-			this._filterRecipes()
+			this.filterRecipes()
 		}
 	}
+
 	removeSelectedAppliance(appliance) {
 		if (this.selectedAppliance.indexOf(appliance) != -1) {
 			this.allAppliance.push(...this.selectedAppliance.splice(this.selectedAppliance.indexOf(appliance), 1))
 			this.allAppliance.sort()
-			this._filterRecipes()
+			this.filterRecipes()
 		}
 	}
 
-	getSelectedIngredients() {
-		return this.selectedIngredients
-	}
-	getSelectedUstensils() {
-		return this.selectedUstensils
-	}
-	getSelectedAppliance() {
-		return this.selectedAppliance
+	addTextFilter(textFilter) {
+		this.textFilter = textFilter.toLowerCase()
+		this.filterRecipes()
 	}
 
-	findRecipes() {
-		return []
+	removeTextFilter() {
+		this.textFilter = ''
+		this.filterRecipes()
 	}
 
-	findIngredients(value) {
+	// -- getFiltered Methods
+	getFilteredIngredients(value) {
 		return this.allIngredient.filter((ingredient) => ingredient.toLowerCase().includes(value.toLowerCase()))
 	}
 
-	findAppliance(value) {
+	getFilteredAppliance(value) {
 		return this.allAppliance.filter((appliance) => appliance.toLowerCase().includes(value.toLowerCase()))
 	}
 
-	findUstensils(value) {
+	getFilteredUstensils(value) {
 		return this.allUstensils.filter((ustensil) => ustensil.toLowerCase().includes(value.toLowerCase()))
 	}
 
-	_filterRecipes() {
-		if (this.selectedAppliance.length === 0 && this.selectedIngredients.length === 0 && this.selectedUstensils.lenght === 0)
+	// Filtering Method
+	filterRecipes() {
+		// If no filter, filteredRecipes = allRecipes
+		if (this.selectedAppliance.length === 0 && this.selectedIngredients.length === 0 && this.selectedUstensils.lenght === 0 && this.textFilter === '') {
 			this.filteredRecipes = this.allRecipes.slice()
-		else
+			return
+		}
+
+		// filter recipes by selected ustensil, ingredient and appliance
 		this.filteredRecipes = this.allRecipes.filter((recipe) => {
 			return (
 				this.selectedUstensils.every((selectedUstensil) => recipe.ustensils.includes(selectedUstensil)) &&
 				this.selectedAppliance.every((selectedAppliance) => recipe.appliance === selectedAppliance) &&
 				this.selectedIngredients.every((selectedIngredient) => recipe.ingredients.map((ingredient) => ingredient.ingredient).includes(selectedIngredient))
+			)
+		})
+
+		// filter recipes by text
+		this.filteredRecipes = this.filteredRecipes.filter((recipe) => {
+			return (
+				recipe.description.toLowerCase().includes(this.textFilter) ||
+				recipe.name.toLowerCase().includes(this.textFilter) ||
+				recipe.ingredients
+					.map((ingredient) => ingredient.ingredient)
+					.join('')
+					.toLowerCase()
+					.includes(this.textFilter)
 			)
 		})
 	}

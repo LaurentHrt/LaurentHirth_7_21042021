@@ -68,19 +68,19 @@ function displayDropdowns() {
 	dropdownAppliance.innerHTML = ''
 	dropdownUstensils.innerHTML = ''
 
-	recipeService.findIngredients(ingredientInput.value).forEach((ingredient) => {
+	recipeService.getFilteredIngredients(ingredientInput.value).forEach((ingredient) => {
 		const htmlBloc = getDropdownHtmlBloc(ingredient)
 		htmlBloc.addEventListener('click', () => onClickIngredient(ingredient))
 		dropdownIngredient.append(htmlBloc)
 	})
 
-	recipeService.findAppliance(applianceInput.value).forEach((appliance) => {
+	recipeService.getFilteredAppliance(applianceInput.value).forEach((appliance) => {
 		const htmlBloc = getDropdownHtmlBloc(appliance)
 		htmlBloc.addEventListener('click', () => onClickAppliance(appliance))
 		dropdownAppliance.append(htmlBloc)
 	})
 
-	recipeService.findUstensils(ustensilInput.value).forEach((ustensil) => {
+	recipeService.getFilteredUstensils(ustensilInput.value).forEach((ustensil) => {
 		const htmlBloc = getDropdownHtmlBloc(ustensil)
 		htmlBloc.addEventListener('click', () => onClickUstensil(ustensil))
 		dropdownUstensils.append(htmlBloc)
@@ -88,7 +88,7 @@ function displayDropdowns() {
 
 	ingredientInput.addEventListener('input', (e) => {
 		dropdownIngredient.innerHTML = ''
-		recipeService.findIngredients(e.target.value).forEach((ingredient) => {
+		recipeService.getFilteredIngredients(e.target.value).forEach((ingredient) => {
 			const htmlBloc = getDropdownHtmlBloc(ingredient)
 			htmlBloc.addEventListener('click', () => onClickIngredient(ingredient))
 			dropdownIngredient.append(htmlBloc)
@@ -97,7 +97,7 @@ function displayDropdowns() {
 
 	applianceInput.addEventListener('input', (e) => {
 		dropdownAppliance.innerHTML = ''
-		recipeService.findAppliance(e.target.value).forEach((appliance) => {
+		recipeService.getFilteredAppliance(e.target.value).forEach((appliance) => {
 			const htmlBloc = getDropdownHtmlBloc(appliance)
 			htmlBloc.addEventListener('click', () => onClickAppliance(appliance))
 			dropdownAppliance.append(htmlBloc)
@@ -106,7 +106,7 @@ function displayDropdowns() {
 
 	ustensilInput.addEventListener('input', (e) => {
 		dropdownUstensils.innerHTML = ''
-		recipeService.findUstensils(e.target.value).forEach((ustensil) => {
+		recipeService.getFilteredUstensils(e.target.value).forEach((ustensil) => {
 			const htmlBloc = getDropdownHtmlBloc(ustensil)
 			htmlBloc.addEventListener('click', () => onClickUstensil(ustensil))
 			dropdownUstensils.append(htmlBloc)
@@ -178,6 +178,22 @@ function displayRecipes() {
 	})
 }
 
+function searchbarBehaviour() {
+	const searchBar = document.querySelector('.searchBar')
+
+	searchBar.addEventListener('input', (e) => {
+		if (e.target.value.length > 2) {
+			recipeService.addTextFilter(e.target.value)
+			displayRecipes()
+		}
+		else {
+			recipeService.removeTextFilter()
+			displayRecipes()
+		}
+	})
+}
+
 displaySelectedTags()
 displayDropdowns()
 displayRecipes()
+searchbarBehaviour()
