@@ -151,10 +151,17 @@ function displayDropdowns() {
 
 function displayRecipes() {
 	const recipeList = document.querySelector('.recipe-list')
+	const notFound = document.querySelector('.notFound')
 	const displayedRecipesList = recipeService.getFilteredRecipes()
 
 	recipeList.innerHTML = ''
+	notFound.textContent = ''
 
+	if (displayedRecipesList.length === 0) {
+		notFound.textContent = 'Aucune recette ne correspond à votre critère… Vous pouvez chercher « tarte aux pommes », « poisson », etc.'
+		return
+	}
+	
 	displayedRecipesList.forEach((recipe) => {
 		recipeList.innerHTML += `<div class="col-xl-4 col-lg-6 col-md-6">
 			<div class="card mb-4 shadow-sm">
@@ -185,8 +192,7 @@ function searchbarBehaviour() {
 		if (e.target.value.length > 2) {
 			recipeService.addTextFilter(e.target.value)
 			displayRecipes()
-		}
-		else {
+		} else {
 			recipeService.removeTextFilter()
 			displayRecipes()
 		}
