@@ -1,5 +1,8 @@
 .dropdown-menu {
-    width: 50em;
+    width: auto;
+    height: fit-content;
+    max-height: 40vh;
+    overflow: auto;
 }
 
 .card-img-top {
@@ -7,6 +10,7 @@
 }
 .card-body {
     height: 300px;
+    overflow: hidden;
 }
 
 .card-text {
@@ -14,9 +18,11 @@
     height: 100%;
 }
 
-.recipeCard__text {
+.recipeDescription {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 11;
     overflow: hidden;
-    height: 230px;
 }
 
 .dropdown-item {
