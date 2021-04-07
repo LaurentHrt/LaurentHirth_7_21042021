@@ -15,12 +15,12 @@ function displaySelectedTags() {
         buttonIngredient.classList.add('btn', 'btn-primary')
         buttonIngredient.setAttribute('type', 'button')
         buttonIngredient.textContent = ingredient + ' ✖'
+        selectedTagsDiv.append(buttonIngredient)
         buttonIngredient.addEventListener('click', (e) => {
             e.preventDefault()
             recipeService.removeSelectedIngredient(ingredient)
             displayRecipes()
         })
-        selectedTagsDiv.append(buttonIngredient)
     })
 
     selectedAppliance.forEach((appliance) => {
@@ -28,12 +28,12 @@ function displaySelectedTags() {
         buttonAppliance.classList.add('btn', 'btn-success')
         buttonAppliance.setAttribute('type', 'button')
         buttonAppliance.textContent = appliance + ' ✖'
+        selectedTagsDiv.append(buttonAppliance)
         buttonAppliance.addEventListener('click', (e) => {
             e.preventDefault()
             recipeService.removeSelectedAppliance(appliance)
             displayRecipes()
         })
-        selectedTagsDiv.append(buttonAppliance)
     })
 
     selectedUstensils.forEach((ustensil) => {
@@ -41,12 +41,12 @@ function displaySelectedTags() {
         buttonUstensil.classList.add('btn', 'btn-danger')
         buttonUstensil.setAttribute('type', 'button')
         buttonUstensil.textContent = ustensil + ' ✖'
+        selectedTagsDiv.append(buttonUstensil)
         buttonUstensil.addEventListener('click', (e) => {
             e.preventDefault()
             recipeService.removeSelectedUstensil(ustensil)
             displayRecipes()
         })
-        selectedTagsDiv.append(buttonUstensil)
     })
 }
 
@@ -57,7 +57,6 @@ function displayDropdowns() {
     const ingredientNotFound = document.querySelector('.ingredientNotFound')
     const applianceNotFound = document.querySelector('.applianceNotFound')
     const ustensilNotFound = document.querySelector('.ustensilNotFound')
-
     const filteredIngredients = recipeService.getFilteredIngredients()
     const filteredUstensils = recipeService.getFilteredUstensils()
     const filteredAppliance = recipeService.getFilteredAppliance()

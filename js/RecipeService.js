@@ -35,6 +35,18 @@ export class RecipeService {
         this.ingredientTextFilter = ''
         this.ustensilTextFilter = ''
         this.applianceTextFilter = ''
+        this.hasFilter = false
+    }
+
+    _updateHasFilter() {
+        if (
+            this.selectedAppliance.length === 0 &&
+            this.selectedIngredients.length === 0 &&
+            this.selectedUstensils.lenght === 0 &&
+            this.recipeTextFilter === ''
+        )
+            this.hasFilter = false
+        else this.hasFilter = true
     }
 
     // --- Get methods
@@ -96,6 +108,7 @@ export class RecipeService {
                 )
             )
         }
+        this._updateHasFilter()
     }
 
     addSelectedUstensil(ustensil) {
@@ -107,6 +120,7 @@ export class RecipeService {
                 )
             )
         }
+        this._updateHasFilter()
     }
 
     addSelectedAppliance(appliance) {
@@ -118,6 +132,7 @@ export class RecipeService {
                 )
             )
         }
+        this._updateHasFilter()
     }
 
     removeSelectedIngredient(ingredient) {
@@ -130,6 +145,7 @@ export class RecipeService {
             )
             this.filteredIngredients.sort()
         }
+        this._updateHasFilter()
     }
 
     removeSelectedUstensil(ustensil) {
@@ -142,6 +158,7 @@ export class RecipeService {
             )
             this.filteredUstensils.sort()
         }
+        this._updateHasFilter()
     }
 
     removeSelectedAppliance(appliance) {
@@ -154,14 +171,17 @@ export class RecipeService {
             )
             this.filteredAppliance.sort()
         }
+        this._updateHasFilter()
     }
 
     addRecipeTextFilter(textFilter) {
         this.recipeTextFilter = textFilter.toLowerCase()
+        this._updateHasFilter()
     }
 
     removeRecipeTextFilter() {
         this.recipeTextFilter = ''
+        this._updateHasFilter()
     }
 
     addIngredientTextFilter(textFilter) {
@@ -191,12 +211,7 @@ export class RecipeService {
     // --- Filtering Methods
     filterRecipes() {
         // If no filter, filteredRecipes = allRecipes
-        if (
-            this.selectedAppliance.length === 0 &&
-            this.selectedIngredients.length === 0 &&
-            this.selectedUstensils.lenght === 0 &&
-            this.recipeTextFilter === ''
-        ) {
+        if (!this.hasFilter) {
             this.filteredRecipes = this.allRecipes.slice()
             return
         }
