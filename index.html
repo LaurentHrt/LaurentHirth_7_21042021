@@ -19,40 +19,35 @@
 			<div class="row justify-content-center mb-5"><img src="img/logo.svg" alt="Logo" /></div>
 			<div class="row">
 				<div class="input-group input-group-lg mb-3 col-12">
-					<input
-						type="text"
-						class="form-control"
-						aria-label="Rechercher un ingrédient, appareil, ustensile ou une recette"
-						aria-describedby="basic-addon2"
-						placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette"
-					/>
+					<input type="text" class="form-control searchBar" placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette" />
 					<div class="input-group-append">
-						<button class="btn btn-outline-secondary" type="button">Rechercher</button>
+						<span class="input-group-text">🔎</span>
 					</div>
 				</div>
 			</div>
 
-			<div class="row mb-5"></div>
+			<div class="d-grid gap-2 d-md-block mb-5 tags"></div>
+
 
 			<div class="row mb-5">
 				<div class="input-group input-group-lg col-lg-3 col-md-12 mb-3">
-					<input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrédients" />
+					<input type="text" class="form-control ingredientInput" placeholder="Ingrédients" data-toggle="dropdown" />
 					<div class="input-group-append">
-						<button class="btn btn-primary dropdown-toggle mr-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+						<button class="btn btn-primary dropdown-toggle mr-3" type="button" data-toggle="dropdown"></button>
 						<div class="dropdown-menu"><div class="row ingredients"></div></div>
 					</div>
 				</div>
 				<div class="input-group input-group-lg col-lg-3 col-md-12 mb-3">
-					<input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Appareils" />
+					<input type="text" class="form-control applianceInput" placeholder="Appareils" data-toggle="dropdown" />
 					<div class="input-group-append">
-						<button class="btn btn-success dropdown-toggle mr-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+						<button class="btn btn-success dropdown-toggle mr-3" type="button" data-toggle="dropdown"></button>
 						<div class="dropdown-menu"><div class="row appliance"></div></div>
 					</div>
 				</div>
 				<div class="input-group input-group-lg col-lg-3 col-md-12 mb-3">
-					<input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ustensiles" />
+					<input type="text" class="form-control ustensilInput" placeholder="Ustensiles" data-toggle="dropdown" />
 					<div class="input-group-append">
-						<button class="btn btn-danger dropdown-toggle mr-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+						<button class="btn btn-danger dropdown-toggle mr-3" type="button" data-toggle="dropdown"></button>
 						<div class="dropdown-menu"><div class="row ustensils"></div></div>
 					</div>
 				</div>
@@ -60,85 +55,10 @@
 		</header>
 
 		<main class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="card mb-4 shadow-sm">
-						<svg class="card-img-top bg-secondary"></svg>
-						<div class="card-body">
-							<div class="row no-gutters">
-								<h5 class="col-8 card-title">Titre</h5>
-								<h5 class="col card-title">Temps</h5>
-							</div>
-							<div class="row no-gutters">
-								<p class="col-6 card-text font-weight-bold">
-									This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-								</p>
-								<p class="col-6 card-text">
-									This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="card mb-4 shadow-sm">
-						<svg class="card-img-top bg-secondary"></svg>
-						<div class="card-body">
-							<div class="row no-gutters">
-								<h5 class="col-8 card-title">Titre</h5>
-								<h5 class="col card-title">Temps</h5>
-							</div>
-							<div class="row no-gutters">
-								<p class="col-6 card-text font-weight-bold">
-									This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-								</p>
-								<p class="col-6 card-text">
-									This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="card mb-4 shadow-sm">
-						<svg class="card-img-top bg-secondary"></svg>
-						<div class="card-body">
-							<div class="row no-gutters">
-								<h5 class="col-8 card-title">Titre</h5>
-								<h5 class="col card-title">Temps</h5>
-							</div>
-							<div class="row no-gutters">
-								<p class="col-6 card-text font-weight-bold">
-									This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-								</p>
-								<p class="col-6 card-text">
-									This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="card mb-4 shadow-sm">
-						<svg class="card-img-top bg-secondary"></svg>
-						<div class="card-body">
-							<div class="row no-gutters">
-								<h5 class="col-8 card-title">Titre</h5>
-								<h5 class="col card-title">Temps</h5>
-							</div>
-							<div class="row no-gutters">
-								<p class="col-6 card-text font-weight-bold">
-									This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-								</p>
-								<p class="col-6 card-text">
-									This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<p class="text-center notFound"></p>
+			<div class="row recipe-list"></div>
 		</main>
+
 		<script
 			src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

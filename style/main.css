@@ -1,3 +1,29 @@
 .dropdown-menu {
 	width: 50em;
 }
+
+.card-img-top {
+	height: 200px;
+}
+.card-body {
+	height: 300px;
+}
+
+.card-text {
+	font-size: 0.8em;
+	height: 100%
+}
+
+.recipeCard__text{
+	overflow: hidden;
+	height: 230px;
+}
+
+.dropdown-item{
+	text-transform: lowercase;
+}
+
+.tags button{
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
