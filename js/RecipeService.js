@@ -240,18 +240,18 @@ export class RecipeService {
     }
 
     filterIngredient() {
-        if (this.ingredientTextFilter === '') {
-            this.filteredIngredients = [
-                ...new Set(
-                    this.filteredRecipes
-                        .flatMap((recipe) =>
-                            recipe.ingredients.map(
-                                (ingredient) => ingredient.ingredient
-                            )
+        this.filteredIngredients = [
+            ...new Set(
+                this.filteredRecipes
+                    .flatMap((recipe) =>
+                        recipe.ingredients.map(
+                            (ingredient) => ingredient.ingredient
                         )
-                        .sort()
-                ),
-            ]
+                    )
+                    .sort()
+            ),
+        ]
+        if (this.ingredientTextFilter === '') {
             this.filteredIngredients = this.filteredIngredients.filter(
                 (ingredient) => !this.selectedIngredients.includes(ingredient)
             )
@@ -264,14 +264,14 @@ export class RecipeService {
     }
 
     filterUstensil() {
+        this.filteredUstensils = [
+            ...new Set(
+                this.filteredRecipes
+                    .flatMap((recipe) => recipe.ustensils)
+                    .sort()
+            ),
+        ]
         if (this.ustensilTextFilter === '') {
-            this.filteredUstensils = [
-                ...new Set(
-                    this.filteredRecipes
-                        .flatMap((recipe) => recipe.ustensils)
-                        .sort()
-                ),
-            ]
             this.filteredUstensils = this.filteredUstensils.filter(
                 (ustensil) => !this.selectedUstensils.includes(ustensil)
             )
@@ -283,14 +283,14 @@ export class RecipeService {
     }
 
     filterAppliance() {
+        this.filteredAppliance = [
+            ...new Set(
+                this.filteredRecipes
+                    .flatMap((recipe) => recipe.appliance)
+                    .sort()
+            ),
+        ]
         if (this.applianceTextFilter === '') {
-            this.filteredAppliance = [
-                ...new Set(
-                    this.filteredRecipes
-                        .flatMap((recipe) => recipe.appliance)
-                        .sort()
-                ),
-            ]
             this.filteredAppliance = this.filteredAppliance.filter(
                 (appliance) => !this.selectedAppliance.includes(appliance)
             )

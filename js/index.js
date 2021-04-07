@@ -54,9 +54,6 @@ function displayDropdowns() {
     const dropdownIngredient = document.querySelector('.dropdownIngredients')
     const dropdownAppliance = document.querySelector('.dropdownAppliance')
     const dropdownUstensils = document.querySelector('.dropdownUstensils')
-    const ingredientInput = document.querySelector('.ingredientInput')
-    const applianceInput = document.querySelector('.applianceInput')
-    const ustensilInput = document.querySelector('.ustensilInput')
     const ingredientNotFound = document.querySelector('.ingredientNotFound')
     const applianceNotFound = document.querySelector('.applianceNotFound')
     const ustensilNotFound = document.querySelector('.ustensilNotFound')
@@ -65,13 +62,13 @@ function displayDropdowns() {
     const filteredUstensils = recipeService.getFilteredUstensils()
     const filteredAppliance = recipeService.getFilteredAppliance()
 
-    dropdownIngredient.innerHTML = ''
-    dropdownAppliance.innerHTML = ''
-    dropdownUstensils.innerHTML = ''
-
     ingredientNotFound.textContent = ''
     ustensilNotFound.textContent = ''
     applianceNotFound.textContent = ''
+
+    dropdownIngredient.innerHTML = ''
+    dropdownAppliance.innerHTML = ''
+    dropdownUstensils.innerHTML = ''
 
     if (filteredIngredients.length === 0)
         ingredientNotFound.textContent =
@@ -101,49 +98,12 @@ function displayDropdowns() {
         dropdownUstensils.append(htmlBloc)
     })
 
-    ingredientInput.addEventListener('input', (e) => {
-        dropdownIngredient.innerHTML = ''
-        recipeService.addIngredientTextFilter(e.target.value)
-        recipeService.getFilteredIngredients().forEach((ingredient) => {
-            const htmlBloc = getDropdownHtmlBloc(ingredient)
-            htmlBloc.addEventListener('click', () =>
-                onClickIngredient(ingredient)
-            )
-            dropdownIngredient.append(htmlBloc)
-        })
-    })
-
-    applianceInput.addEventListener('input', (e) => {
-        dropdownAppliance.innerHTML = ''
-        recipeService.addApplianceTextFilter(e.target.value)
-        recipeService.getFilteredAppliance().forEach((appliance) => {
-            const htmlBloc = getDropdownHtmlBloc(appliance)
-            htmlBloc.addEventListener('click', () =>
-                onClickAppliance(appliance)
-            )
-            dropdownAppliance.append(htmlBloc)
-        })
-    })
-
-    ustensilInput.addEventListener('input', (e) => {
-        dropdownUstensils.innerHTML = ''
-        recipeService.addUstensilTextFilter(e.target.value)
-        recipeService.getFilteredUstensils().forEach((ustensil) => {
-            const htmlBloc = getDropdownHtmlBloc(ustensil)
-            htmlBloc.addEventListener('click', () => onClickUstensil(ustensil))
-            dropdownUstensils.append(htmlBloc)
-        })
-    })
-
     function getDropdownHtmlBloc(text) {
         const a = document.createElement('a')
         const div = document.createElement('div')
-
         a.classList.add('dropdown-item')
         a.textContent = text
-
         a.addEventListener('click', (e) => e.preventDefault())
-
         div.append(a)
         return div
     }
@@ -205,21 +165,37 @@ function displayRecipes() {
     displaySelectedTags()
 }
 
-function searchbarBehaviour() {
+function initSearchbarBehaviour() {
     const searchBar = document.querySelector('.searchBar')
+    const ingredientInput = document.querySelector('.ingredientInput')
+    const applianceInput = document.querySelector('.applianceInput')
+    const ustensilInput = document.querySelector('.ustensilInput')
 
     searchBar.addEventListener('input', (e) => {
         if (e.target.value.length > 2) {
             recipeService.addRecipeTextFilter(e.target.value)
             displayRecipes()
-            displayDropdowns()
         } else {
             recipeService.removeRecipeTextFilter()
             displayRecipes()
-            displayDropdowns()
         }
+    })
+
+    ingredientInput.addEventListener('input', (e) => {
+        recipeService.addIngredientTextFilter(e.target.value)
+        displayDropdowns()
+    })
+
+    applianceInput.addEventListener('input', (e) => {
+        recipeService.addApplianceTextFilter(e.target.value)
+        displayDropdowns()
+    })
+
+    ustensilInput.addEventListener('input', (e) => {
+        recipeService.addUstensilTextFilter(e.target.value)
+        displayDropdowns()
     })
 }
 
 displayRecipes()
-searchbarBehaviour()
+initSearchbarBehaviour()
