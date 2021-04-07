@@ -158,9 +158,11 @@ function searchbarBehaviour() {
 		if (e.target.value.length > 2) {
 			recipeService.addRecipeTextFilter(e.target.value)
 			displayRecipes()
+			displayDropdowns()
 		} else {
 			recipeService.removeRecipeTextFilter()
 			displayRecipes()
+			displayDropdowns()
 		}
 	})
 }
