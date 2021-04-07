@@ -33,7 +33,15 @@
                 </div>
             </div>
 
+            <template class="selectedTagTemplate"
+                ><button class="btn" type="button"></button
+            ></template>
+
             <div class="d-grid gap-2 d-md-block mb-5 tags"></div>
+
+            <template class="dropdownItemTemplate">
+                <a class="dropdown-item"></a>
+            </template>
 
             <div class="row mb-5">
                 <div class="input-group input-group-lg col-lg-3 col-md-12 mb-3">
@@ -97,8 +105,6 @@
         </header>
 
         <main class="container">
-            <p class="text-center notFound"></p>
-
             <template class="recipeTemplate">
                 <div class="col-xl-4 col-lg-6 col-md-6">
                     <div class="card mb-4 shadow-sm">
@@ -122,6 +128,8 @@
                     </div>
                 </div>
             </template>
+
+            <p class="text-center notFound"></p>
 
             <div class="row recipe-list"></div>
         </main>

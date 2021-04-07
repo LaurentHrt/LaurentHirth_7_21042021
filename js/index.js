@@ -11,43 +11,40 @@ function displaySelectedTags() {
     selectedTagsDiv.innerHTML = ''
 
     selectedIngredients.forEach((ingredient) => {
-        const buttonIngredient = document.createElement('button')
-        buttonIngredient.classList.add('btn', 'btn-primary')
-        buttonIngredient.setAttribute('type', 'button')
-        buttonIngredient.textContent = ingredient + ' ✖'
-        selectedTagsDiv.append(buttonIngredient)
-        buttonIngredient.addEventListener('click', (e) => {
-            e.preventDefault()
+        const htmlBloc = getSelectedTagHtmlBloc(ingredient, 'btn-primary')
+        selectedTagsDiv.append(htmlBloc)
+        htmlBloc.addEventListener('click', () => {
             recipeService.removeSelectedIngredient(ingredient)
             displayRecipes()
         })
     })
 
     selectedAppliance.forEach((appliance) => {
-        const buttonAppliance = document.createElement('button')
-        buttonAppliance.classList.add('btn', 'btn-success')
-        buttonAppliance.setAttribute('type', 'button')
-        buttonAppliance.textContent = appliance + ' ✖'
-        selectedTagsDiv.append(buttonAppliance)
-        buttonAppliance.addEventListener('click', (e) => {
-            e.preventDefault()
+        const htmlBloc = getSelectedTagHtmlBloc(appliance, 'btn-success')
+        selectedTagsDiv.append(htmlBloc)
+        htmlBloc.addEventListener('click', () => {
             recipeService.removeSelectedAppliance(appliance)
             displayRecipes()
         })
     })
 
     selectedUstensils.forEach((ustensil) => {
-        const buttonUstensil = document.createElement('button')
-        buttonUstensil.classList.add('btn', 'btn-danger')
-        buttonUstensil.setAttribute('type', 'button')
-        buttonUstensil.textContent = ustensil + ' ✖'
-        selectedTagsDiv.append(buttonUstensil)
-        buttonUstensil.addEventListener('click', (e) => {
-            e.preventDefault()
+        const htmlBloc = getSelectedTagHtmlBloc(ustensil, 'btn-danger')
+        selectedTagsDiv.append(htmlBloc)
+        htmlBloc.addEventListener('click', () => {
             recipeService.removeSelectedUstensil(ustensil)
             displayRecipes()
         })
     })
+
+    function getSelectedTagHtmlBloc(text, style) {
+        const selectedTagTemplate = document
+            .querySelector('.selectedTagTemplate')
+            .content.firstElementChild.cloneNode(true)
+        selectedTagTemplate.classList.add(style)
+        selectedTagTemplate.textContent = text + ' ✖'
+        return selectedTagTemplate
+    }
 }
 
 function displayDropdowns() {
@@ -74,7 +71,7 @@ function displayDropdowns() {
             "Il n'y a pas d'autre ingrédient disponible"
     if (filteredUstensils.length === 0)
         ustensilNotFound.textContent =
-            "Il n'y a pas d'autre ustensile disponible"
+            "Il n'y a pas d'autre ustensil disponible"
     if (filteredAppliance.length === 0)
         applianceNotFound.textContent =
             "Il n'y a pas d'autre appareil disponible"
@@ -98,13 +95,11 @@ function displayDropdowns() {
     })
 
     function getDropdownHtmlBloc(text) {
-        const a = document.createElement('a')
-        const div = document.createElement('div')
-        a.classList.add('dropdown-item')
-        a.textContent = text
-        a.addEventListener('click', (e) => e.preventDefault())
-        div.append(a)
-        return div
+        const htmlBloc = document
+            .querySelector('.dropdownItemTemplate')
+            .content.firstElementChild.cloneNode(true)
+        htmlBloc.textContent = text
+        return htmlBloc
     }
 
     function onClickIngredient(ingredient) {
