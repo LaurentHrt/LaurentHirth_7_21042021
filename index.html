@@ -94,6 +94,31 @@
 
         <main class="container">
             <p class="text-center notFound"></p>
+
+            <template class="recipeTemplate">
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="card mb-4 shadow-sm">
+                        <svg class="card-img-top bg-secondary"></svg>
+                        <div class="card-body">
+                            <div class="row no-gutters">
+                                <h5
+                                    class="col-8 card-title text-truncate recipeName"
+                                ></h5>
+                                <h5 class="col card-title recipeTime"></h5>
+                            </div>
+                            <div class="row recipeCard__text">
+                                <p
+                                    class="col-6 card-text font-weight-bold recipeIngredients"
+                                ></p>
+                                <p
+                                    class="col-6 card-text recipeDescription"
+                                ></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
             <div class="row recipe-list"></div>
         </main>
 

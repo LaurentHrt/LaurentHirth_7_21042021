@@ -159,34 +159,26 @@ function displayRecipes() {
     }
 
     displayedRecipesList.forEach((recipe) => {
-        recipeList.innerHTML += `<div class="col-xl-4 col-lg-6 col-md-6">
-			<div class="card mb-4 shadow-sm">
-				<svg class="card-img-top bg-secondary"></svg>
-				<div class="card-body">
-					<div class="row no-gutters">
-						<h5 class="col-8 card-title text-truncate">${recipe.name}</h5>
-						<h5 class="col card-title">⏱ ${recipe.time} min</h5>
-					</div>
-					<div class="row recipeCard__text">
-						<p class="col-6 card-text font-weight-bold">
-							${recipe.ingredients
-                                .map(
-                                    (ingredient) =>
-                                        ingredient.ingredient +
-                                        (ingredient?.quantity
-                                            ? ' : ' + ingredient.quantity
-                                            : '') +
-                                        (ingredient.unit || '')
-                                )
-                                .join('<br>')}
-						</p>
-						<p class="col-6 card-text">
-							${recipe.description}
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>`
+        const recipeTemplate = document.querySelector('.recipeTemplate')
+        const clone = recipeTemplate.content.cloneNode(true)
+        const recipeName = clone.querySelector('.recipeName')
+        const recipeTime = clone.querySelector('.recipeTime')
+        const recipeIngredients = clone.querySelector('.recipeIngredients')
+        const recipeDescription = clone.querySelector('.recipeDescription')
+
+        recipeName.textContent = recipe.name
+        recipeTime.textContent = '⏱ ' + recipe.time + ' min'
+        recipeIngredients.innerHTML = recipe.ingredients
+            .map(
+                (ingredient) =>
+                    ingredient.ingredient +
+                    (ingredient?.quantity ? ' : ' + ingredient.quantity : '') +
+                    (ingredient.unit || '')
+            )
+            .join('<br>')
+        recipeDescription.textContent = recipe.description
+
+        recipeList.append(clone)
     })
 
     displayDropdowns()
