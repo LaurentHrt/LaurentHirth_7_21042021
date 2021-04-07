@@ -62,7 +62,7 @@ function displayDropdowns() {
 	dropdownAppliance.innerHTML = ''
 	dropdownUstensils.innerHTML = ''
 
-	recipeService.getFilteredIngredients(ingredientInput.value).forEach((ingredient) => {
+	recipeService.getFilteredIngredients().forEach((ingredient) => {
 		const htmlBloc = getDropdownHtmlBloc(ingredient)
 		htmlBloc.addEventListener('click', () => onClickIngredient(ingredient))
 		dropdownIngredient.append(htmlBloc)
@@ -80,7 +80,35 @@ function displayDropdowns() {
 		dropdownUstensils.append(htmlBloc)
 	})
 
-	
+	ingredientInput.addEventListener('input', (e) => {
+		dropdownIngredient.innerHTML = ''
+		recipeService.addIngredientTextFilter(e.target.value)
+		recipeService.getFilteredIngredients().forEach((ingredient) => {
+			const htmlBloc = getDropdownHtmlBloc(ingredient)
+			htmlBloc.addEventListener('click', () => onClickIngredient(ingredient))
+			dropdownIngredient.append(htmlBloc)
+		})
+	})
+
+	applianceInput.addEventListener('input', (e) => {
+		dropdownAppliance.innerHTML = ''
+		recipeService.addApplianceTextFilter(e.target.value)
+		recipeService.getFilteredAppliance().forEach((appliance) => {
+			const htmlBloc = getDropdownHtmlBloc(appliance)
+			htmlBloc.addEventListener('click', () => onClickAppliance(appliance))
+			dropdownAppliance.append(htmlBloc)
+		})
+	})
+
+	ustensilInput.addEventListener('input', (e) => {
+		dropdownUstensils.innerHTML = ''
+		recipeService.addUstensilTextFilter(e.target.value)
+		recipeService.getFilteredUstensils().forEach((ustensil) => {
+			const htmlBloc = getDropdownHtmlBloc(ustensil)
+			htmlBloc.addEventListener('click', () => onClickUstensil(ustensil))
+			dropdownUstensils.append(htmlBloc)
+		})
+	})
 
 	function getDropdownHtmlBloc(text) {
 		const a = document.createElement('a')
@@ -124,7 +152,7 @@ function displayRecipes() {
 		notFound.textContent = 'Aucune recette ne correspond à votre critère… Vous pouvez chercher « tarte aux pommes », « poisson », etc.'
 		return
 	}
-	
+
 	displayedRecipesList.forEach((recipe) => {
 		recipeList.innerHTML += `<div class="col-xl-4 col-lg-6 col-md-6">
 			<div class="card mb-4 shadow-sm">
