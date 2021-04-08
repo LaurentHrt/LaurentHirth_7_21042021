@@ -163,34 +163,38 @@ export class RecipeService {
 
     // --- Filtering Methods
     filterRecipes() {
-        this.filteredRecipes = this.allRecipes.filter((recipe) => {
-            return (
-                // filter recipes by selected ustensil, ingredient and appliance
-                this.selectedUstensils.every((selectedUstensil) =>
-                    recipe.ustensils.includes(selectedUstensil)
-                ) &&
-                this.selectedAppliance.every(
-                    (selectedAppliance) =>
-                        recipe.appliance === selectedAppliance
-                ) &&
-                this.selectedIngredients.every((selectedIngredient) =>
-                    recipe.ingredients
-                        .map((ingredient) => ingredient.ingredient)
-                        .includes(selectedIngredient)
-                ) &&
-                // filter recipes by text
-                this.recipeTextFilter.every(
-                    (word) =>
-                        recipe.description.toLowerCase().includes(word) ||
-                        recipe.name.toLowerCase().includes(word) ||
-                        recipe.ingredients
-                            .map((ingredient) => ingredient.ingredient)
-                            .join('')
-                            .toLowerCase()
-                            .includes(word)
+        this.filteredRecipes.length = 0
+
+        for (const recipe of this.allRecipes) {
+            let match = true
+
+            for (const word of this.recipeTextFilter) {
+                if (
+                    !recipe.description.toLowerCase().includes(word) &&
+                    !recipe.name.toLowerCase().includes(word)
                 )
-            )
-        })
+                    match = false
+            }
+
+            for (const selectedAppliance of this.selectedAppliance) {
+                if (recipe.appliance !== selectedAppliance) match = false
+            }
+
+            for (const selectedUstensil of this.selectedUstensils) {
+                if (!recipe.ustensils.includes(selectedUstensil)) match = false
+            }
+
+            const ingredientList = []
+            for (const ingredient of recipe.ingredients) {
+                ingredientList.push(ingredient.ingredient)
+            }
+
+            for (const selectedIngredient of this.selectedIngredients) {
+                if (!ingredientList.includes(selectedIngredient)) match = false
+            }
+
+            if (match) this.filteredRecipes.push(recipe)
+        }
 
         this.filterIngredient()
         this.filterUstensil()
