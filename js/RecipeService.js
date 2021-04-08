@@ -31,7 +31,7 @@ export class RecipeService {
         this.selectedIngredients = []
         this.selectedUstensils = []
         this.selectedAppliance = []
-        this.recipeTextFilter = ''
+        this.recipeTextFilter = []
         this.ingredientTextFilter = ''
         this.ustensilTextFilter = ''
         this.applianceTextFilter = ''
@@ -43,7 +43,7 @@ export class RecipeService {
             this.selectedAppliance.length === 0 &&
             this.selectedIngredients.length === 0 &&
             this.selectedUstensils.lenght === 0 &&
-            this.recipeTextFilter === ''
+            this.recipeTextFilter.length === 0
         )
             this.hasFilter = false
         else this.hasFilter = true
@@ -175,12 +175,12 @@ export class RecipeService {
     }
 
     addRecipeTextFilter(textFilter) {
-        this.recipeTextFilter = textFilter.toLowerCase()
+        this.recipeTextFilter = textFilter.toLowerCase().split(' ')
         this._updateHasFilter()
     }
 
     removeRecipeTextFilter() {
-        this.recipeTextFilter = ''
+        this.recipeTextFilter.length = 0
         this._updateHasFilter()
     }
 
@@ -236,16 +236,15 @@ export class RecipeService {
 
         // filter recipes by text
         this.filteredRecipes = this.filteredRecipes.filter((recipe) => {
-            return (
-                recipe.description
-                    .toLowerCase()
-                    .includes(this.recipeTextFilter) ||
-                recipe.name.toLowerCase().includes(this.recipeTextFilter) ||
-                recipe.ingredients
-                    .map((ingredient) => ingredient.ingredient)
-                    .join('')
-                    .toLowerCase()
-                    .includes(this.recipeTextFilter)
+            return this.recipeTextFilter.every(
+                (word) =>
+                    recipe.description.toLowerCase().includes(word) ||
+                    recipe.name.toLowerCase().includes(word) ||
+                    recipe.ingredients
+                        .map((ingredient) => ingredient.ingredient)
+                        .join('')
+                        .toLowerCase()
+                        .includes(word)
             )
         })
 

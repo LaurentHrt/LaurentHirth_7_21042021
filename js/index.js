@@ -38,12 +38,12 @@ function displaySelectedTags() {
     })
 
     function getSelectedTagHtmlBloc(text, style) {
-        const selectedTagTemplate = document
+        const htmlBloc = document
             .querySelector('.selectedTagTemplate')
             .content.firstElementChild.cloneNode(true)
-        selectedTagTemplate.classList.add(style)
-        selectedTagTemplate.textContent = text + ' ✖'
-        return selectedTagTemplate
+        htmlBloc.classList.add(style)
+        htmlBloc.textContent = text + ' ✖'
+        return htmlBloc
     }
 }
 
