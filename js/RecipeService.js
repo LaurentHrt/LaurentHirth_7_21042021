@@ -38,17 +38,6 @@ export class RecipeService {
         this.hasFilter = false
     }
 
-    _updateHasFilter() {
-        if (
-            this.selectedAppliance.length === 0 &&
-            this.selectedIngredients.length === 0 &&
-            this.selectedUstensils.lenght === 0 &&
-            this.recipeTextFilter.length === 0
-        )
-            this.hasFilter = false
-        else this.hasFilter = true
-    }
-
     // --- Get methods
     getAllRecipes() {
         return this.allRecipes
@@ -100,88 +89,52 @@ export class RecipeService {
 
     // --- Add & Remove methods
     addSelectedIngredient(ingredient) {
-        if (this.filteredIngredients.indexOf(ingredient) != -1) {
-            this.selectedIngredients.push(
-                ...this.filteredIngredients.splice(
-                    this.filteredIngredients.indexOf(ingredient),
-                    1
-                )
-            )
-        }
-        this._updateHasFilter()
+        this.selectedIngredients.push(
+            this.filteredIngredients[
+                this.filteredIngredients.indexOf(ingredient)
+            ]
+        )
     }
 
     addSelectedUstensil(ustensil) {
-        if (this.filteredUstensils.indexOf(ustensil) != -1) {
-            this.selectedUstensils.push(
-                ...this.filteredUstensils.splice(
-                    this.filteredUstensils.indexOf(ustensil),
-                    1
-                )
-            )
-        }
-        this._updateHasFilter()
+        this.selectedUstensils.push(
+            this.filteredUstensils[this.filteredUstensils.indexOf(ustensil)]
+        )
     }
 
     addSelectedAppliance(appliance) {
-        if (this.filteredAppliance.indexOf(appliance) != -1) {
-            this.selectedAppliance.push(
-                ...this.filteredAppliance.splice(
-                    this.filteredAppliance.indexOf(appliance),
-                    1
-                )
-            )
-        }
-        this._updateHasFilter()
+        this.selectedAppliance.push(
+            this.filteredAppliance[this.filteredAppliance.indexOf(appliance)]
+        )
     }
 
     removeSelectedIngredient(ingredient) {
-        if (this.selectedIngredients.indexOf(ingredient) != -1) {
-            this.filteredIngredients.push(
-                ...this.selectedIngredients.splice(
-                    this.selectedIngredients.indexOf(ingredient),
-                    1
-                )
-            )
-            this.filteredIngredients.sort()
-        }
-        this._updateHasFilter()
+        this.selectedIngredients.splice(
+            this.selectedIngredients.indexOf(ingredient),
+            1
+        )
     }
 
     removeSelectedUstensil(ustensil) {
-        if (this.selectedUstensils.indexOf(ustensil) != -1) {
-            this.filteredUstensils.push(
-                ...this.selectedUstensils.splice(
-                    this.selectedUstensils.indexOf(ustensil),
-                    1
-                )
-            )
-            this.filteredUstensils.sort()
-        }
-        this._updateHasFilter()
+        this.selectedUstensils.splice(
+            this.selectedUstensils.indexOf(ustensil),
+            1
+        )
     }
 
     removeSelectedAppliance(appliance) {
-        if (this.selectedAppliance.indexOf(appliance) != -1) {
-            this.filteredAppliance.push(
-                ...this.selectedAppliance.splice(
-                    this.selectedAppliance.indexOf(appliance),
-                    1
-                )
-            )
-            this.filteredAppliance.sort()
-        }
-        this._updateHasFilter()
+        this.selectedAppliance.splice(
+            this.selectedAppliance.indexOf(appliance),
+            1
+        )
     }
 
     addRecipeTextFilter(textFilter) {
         this.recipeTextFilter = textFilter.toLowerCase().split(' ')
-        this._updateHasFilter()
     }
 
     removeRecipeTextFilter() {
         this.recipeTextFilter.length = 0
-        this._updateHasFilter()
     }
 
     addIngredientTextFilter(textFilter) {
@@ -210,15 +163,9 @@ export class RecipeService {
 
     // --- Filtering Methods
     filterRecipes() {
-        // If no filter, filteredRecipes = allRecipes
-        if (!this.hasFilter) {
-            this.filteredRecipes = this.allRecipes.slice()
-            return
-        }
-
-        // filter recipes by selected ustensil, ingredient and appliance
         this.filteredRecipes = this.allRecipes.filter((recipe) => {
             return (
+                // filter recipes by selected ustensil, ingredient and appliance
                 this.selectedUstensils.every((selectedUstensil) =>
                     recipe.ustensils.includes(selectedUstensil)
                 ) &&
@@ -230,21 +177,18 @@ export class RecipeService {
                     recipe.ingredients
                         .map((ingredient) => ingredient.ingredient)
                         .includes(selectedIngredient)
+                ) &&
+                // filter recipes by text
+                this.recipeTextFilter.every(
+                    (word) =>
+                        recipe.description.toLowerCase().includes(word) ||
+                        recipe.name.toLowerCase().includes(word) ||
+                        recipe.ingredients
+                            .map((ingredient) => ingredient.ingredient)
+                            .join('')
+                            .toLowerCase()
+                            .includes(word)
                 )
-            )
-        })
-
-        // filter recipes by text
-        this.filteredRecipes = this.filteredRecipes.filter((recipe) => {
-            return this.recipeTextFilter.every(
-                (word) =>
-                    recipe.description.toLowerCase().includes(word) ||
-                    recipe.name.toLowerCase().includes(word) ||
-                    recipe.ingredients
-                        .map((ingredient) => ingredient.ingredient)
-                        .join('')
-                        .toLowerCase()
-                        .includes(word)
             )
         })
 
@@ -254,6 +198,7 @@ export class RecipeService {
     }
 
     filterIngredient() {
+        // Get ingredient from filtered recipes
         this.filteredIngredients = [
             ...new Set(
                 this.filteredRecipes
@@ -265,19 +210,22 @@ export class RecipeService {
                     .sort()
             ),
         ]
-        if (this.ingredientTextFilter === '') {
-            this.filteredIngredients = this.filteredIngredients.filter(
-                (ingredient) => !this.selectedIngredients.includes(ingredient)
-            )
-            return
-        }
+
+        // Remove selected ingredient and apply the text filter
         this.filteredIngredients = this.filteredIngredients.filter(
-            (ingredient) =>
-                ingredient.toLowerCase().includes(this.ingredientTextFilter)
+            (ingredient) => {
+                return (
+                    ingredient
+                        .toLowerCase()
+                        .includes(this.ingredientTextFilter) &&
+                    !this.selectedIngredients.includes(ingredient)
+                )
+            }
         )
     }
 
     filterUstensil() {
+        // Get ustensil from filtered recipes
         this.filteredUstensils = [
             ...new Set(
                 this.filteredRecipes
@@ -285,18 +233,18 @@ export class RecipeService {
                     .sort()
             ),
         ]
-        if (this.ustensilTextFilter === '') {
-            this.filteredUstensils = this.filteredUstensils.filter(
-                (ustensil) => !this.selectedUstensils.includes(ustensil)
+
+        // Remove selected ustensil and apply the text filter
+        this.filteredUstensils = this.filteredUstensils.filter((ustensil) => {
+            return (
+                ustensil.toLowerCase().includes(this.ustensilTextFilter) &&
+                !this.selectedUstensils.includes(ustensil)
             )
-            return
-        }
-        this.filteredUstensils = this.filteredUstensils.filter((ustensil) =>
-            ustensil.toLowerCase().includes(this.ustensilTextFilter)
-        )
+        })
     }
 
     filterAppliance() {
+        // Get appliance from filtered recipes
         this.filteredAppliance = [
             ...new Set(
                 this.filteredRecipes
@@ -304,14 +252,13 @@ export class RecipeService {
                     .sort()
             ),
         ]
-        if (this.applianceTextFilter === '') {
-            this.filteredAppliance = this.filteredAppliance.filter(
-                (appliance) => !this.selectedAppliance.includes(appliance)
+
+        // Remove selected appliance and apply the text filter
+        this.filteredAppliance = this.filteredAppliance.filter((appliance) => {
+            return (
+                appliance.toLowerCase().includes(this.applianceTextFilter) &&
+                !this.selectedAppliance.includes(appliance)
             )
-            return
-        }
-        this.filteredAppliance = this.filteredAppliance.filter((appliance) =>
-            appliance.toLowerCase().includes(this.applianceTextFilter)
-        )
+        })
     }
 }
