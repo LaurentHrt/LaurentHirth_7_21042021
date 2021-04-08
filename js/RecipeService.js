@@ -24,7 +24,7 @@ export class RecipeService {
                 this.allRecipes.flatMap((recipe) => recipe.ustensils).sort()
             ),
         ]
-        this.filteredRecipes = recipes
+        this.filteredRecipes = this.allRecipes.slice()
         this.filteredIngredients = this.allIngredient.slice()
         this.filteredUstensils = this.allUstensils.slice()
         this.filteredAppliance = this.allAppliance.slice()
