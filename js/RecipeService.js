@@ -192,6 +192,11 @@ export class RecipeService {
             )
         })
 
+        this.filteredRecipes = this.filteredRecipes.sort(function (a, b) {
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
+            else return 1
+        })
+
         this.filterIngredient()
         this.filterUstensil()
         this.filterAppliance()
