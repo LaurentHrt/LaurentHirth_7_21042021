@@ -1,6 +1,9 @@
 let allRecipes = [] // Insert all recipes here
 let filteredRecipes = []
-let recipeTextFilter = ['coco', 'citron']
+
+let recipeTextFilter = ['citron']
+// let recipeTextFilter = ['coco', 'citron']
+// let recipeTextFilter = ['citron', 'coco', 'couteau', 'poisson', 'verre', 'ananas']
 
 filteredRecipes = allRecipes.filter((recipe) => {
     return recipeTextFilter.every(
