@@ -2,6 +2,45 @@ import { RecipeService } from './RecipeService.js'
 
 const recipeService = new RecipeService()
 
+function displayPage() {
+    displayRecipes()
+    displaySelectedTags()
+    displayDropdowns()
+}
+
+function displayRecipes() {
+    const recipeList = document.querySelector('.recipe-list')
+    const notFound = document.querySelector('.recipeNotFound')
+    const displayedRecipesList = recipeService.getFilteredRecipes()
+
+    recipeList.innerHTML = ''
+    notFound.hidden = displayedRecipesList.length !== 0
+
+    displayedRecipesList.forEach((recipe) => {
+        const clone = document
+            .querySelector('.recipeTemplate')
+            .content.cloneNode(true)
+        const recipeName = clone.querySelector('.recipeName')
+        const recipeTime = clone.querySelector('.recipeTime')
+        const recipeIngredients = clone.querySelector('.recipeIngredients')
+        const recipeDescription = clone.querySelector('.recipeDescription')
+
+        recipeName.textContent = recipe.name
+        recipeTime.textContent = '⏱ ' + recipe.time + ' min'
+        recipeIngredients.innerHTML = recipe.ingredients
+            .map(
+                (ingredient) =>
+                    ingredient.ingredient +
+                    (ingredient?.quantity ? ' : ' + ingredient.quantity : '') +
+                    (ingredient.unit || '')
+            )
+            .join('<br>')
+        recipeDescription.textContent = recipe.description
+
+        recipeList.append(clone)
+    })
+}
+
 function displaySelectedTags() {
     const selectedTagsDiv = document.querySelector('.tags')
     const selectedIngredients = recipeService.getSelectedIngredients()
@@ -15,7 +54,7 @@ function displaySelectedTags() {
         selectedTagsDiv.append(htmlBloc)
         htmlBloc.addEventListener('click', () => {
             recipeService.removeSelectedIngredient(ingredient)
-            displayRecipes()
+            displayPage()
         })
     })
 
@@ -24,7 +63,7 @@ function displaySelectedTags() {
         selectedTagsDiv.append(htmlBloc)
         htmlBloc.addEventListener('click', () => {
             recipeService.removeSelectedAppliance(appliance)
-            displayRecipes()
+            displayPage()
         })
     })
 
@@ -33,7 +72,7 @@ function displaySelectedTags() {
         selectedTagsDiv.append(htmlBloc)
         htmlBloc.addEventListener('click', () => {
             recipeService.removeSelectedUstensil(ustensil)
-            displayRecipes()
+            displayPage()
         })
     })
 
@@ -58,23 +97,12 @@ function displayDropdowns() {
     const filteredUstensils = recipeService.getFilteredUstensils()
     const filteredAppliance = recipeService.getFilteredAppliance()
 
-    ingredientNotFound.textContent = ''
-    ustensilNotFound.textContent = ''
-    applianceNotFound.textContent = ''
-
     dropdownIngredient.innerHTML = ''
     dropdownAppliance.innerHTML = ''
     dropdownUstensils.innerHTML = ''
-
-    if (filteredIngredients.length === 0)
-        ingredientNotFound.textContent =
-            "Il n'y a pas d'autre ingrédient disponible"
-    if (filteredUstensils.length === 0)
-        ustensilNotFound.textContent =
-            "Il n'y a pas d'autre ustensil disponible"
-    if (filteredAppliance.length === 0)
-        applianceNotFound.textContent =
-            "Il n'y a pas d'autre appareil disponible"
+    ingredientNotFound.hidden = filteredIngredients.length !== 0
+    applianceNotFound.hidden = filteredAppliance.length !== 0
+    ustensilNotFound.hidden = filteredUstensils.length !== 0
 
     filteredIngredients.forEach((ingredient) => {
         const htmlBloc = getDropdownHtmlBloc(ingredient)
@@ -104,59 +132,18 @@ function displayDropdowns() {
 
     function onClickIngredient(ingredient) {
         recipeService.addSelectedIngredient(ingredient)
-        displayRecipes()
+        displayPage()
     }
 
     function onClickAppliance(appliance) {
         recipeService.addSelectedAppliance(appliance)
-        displayRecipes()
+        displayPage()
     }
 
     function onClickUstensil(ustensil) {
         recipeService.addSelectedUstensil(ustensil)
-        displayRecipes()
+        displayPage()
     }
-}
-
-function displayRecipes() {
-    const recipeList = document.querySelector('.recipe-list')
-    const notFound = document.querySelector('.notFound')
-    const displayedRecipesList = recipeService.getFilteredRecipes()
-
-    recipeList.innerHTML = ''
-    notFound.textContent = ''
-
-    if (displayedRecipesList.length === 0) {
-        notFound.textContent =
-            'Aucune recette ne correspond à votre critère… Vous pouvez chercher « tarte aux pommes », « poisson », etc.'
-        return
-    }
-
-    displayedRecipesList.forEach((recipe) => {
-        const recipeTemplate = document.querySelector('.recipeTemplate')
-        const clone = recipeTemplate.content.cloneNode(true)
-        const recipeName = clone.querySelector('.recipeName')
-        const recipeTime = clone.querySelector('.recipeTime')
-        const recipeIngredients = clone.querySelector('.recipeIngredients')
-        const recipeDescription = clone.querySelector('.recipeDescription')
-
-        recipeName.textContent = recipe.name
-        recipeTime.textContent = '⏱ ' + recipe.time + ' min'
-        recipeIngredients.innerHTML = recipe.ingredients
-            .map(
-                (ingredient) =>
-                    ingredient.ingredient +
-                    (ingredient?.quantity ? ' : ' + ingredient.quantity : '') +
-                    (ingredient.unit || '')
-            )
-            .join('<br>')
-        recipeDescription.textContent = recipe.description
-
-        recipeList.append(clone)
-    })
-
-    displayDropdowns()
-    displaySelectedTags()
 }
 
 function initSearchbarBehaviour() {
@@ -169,9 +156,11 @@ function initSearchbarBehaviour() {
         if (e.target.value.length > 2) {
             recipeService.addRecipeTextFilter(e.target.value)
             displayRecipes()
+            displayDropdowns()
         } else {
             recipeService.removeRecipeTextFilter()
             displayRecipes()
+            displayDropdowns()
         }
     })
 
@@ -191,5 +180,5 @@ function initSearchbarBehaviour() {
     })
 }
 
-displayRecipes()
+displayPage()
 initSearchbarBehaviour()

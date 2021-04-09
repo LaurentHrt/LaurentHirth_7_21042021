@@ -58,7 +58,9 @@
                             data-toggle="dropdown"
                         ></button>
                         <div class="dropdown-menu">
-                            <div class="ingredientNotFound mx-2"></div>
+                            <div class="ingredientNotFound mx-2">
+                                Il n'y a pas d'autre ingrédient disponible
+                            </div>
                             <div class="dropdownIngredients"></div>
                         </div>
                     </div>
@@ -77,7 +79,9 @@
                             data-toggle="dropdown"
                         ></button>
                         <div class="dropdown-menu">
-                            <div class="applianceNotFound mx-2"></div>
+                            <div class="applianceNotFound mx-2">
+                                Il n'y a pas d'autre appareil disponible
+                            </div>
                             <div class="dropdownAppliance"></div>
                         </div>
                     </div>
@@ -96,7 +100,9 @@
                             data-toggle="dropdown"
                         ></button>
                         <div class="dropdown-menu">
-                            <div class="ustensilNotFound mx-2"></div>
+                            <div class="ustensilNotFound mx-2">
+                                Il n'y a pas d'autre ustensil disponible
+                            </div>
                             <div class="dropdownUstensils"></div>
                         </div>
                     </div>
@@ -129,7 +135,10 @@
                 </div>
             </template>
 
-            <p class="text-center notFound"></p>
+            <p class="text-center recipeNotFound">
+                Aucune recette ne correspond à votre critère… Vous pouvez
+                chercher « tarte aux pommes », « poisson », etc.
+            </p>
 
             <div class="row recipe-list"></div>
         </main>
