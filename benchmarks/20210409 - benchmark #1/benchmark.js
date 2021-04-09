@@ -10,7 +10,7 @@ for (const recipe of allRecipes) {
     const ingredientList = []
 
     for (const ingredient of recipe.ingredients) {
-        ingredientList.push(ingredient.ingredient.toLowerCase())
+        ingredientList.push(ingredient.ingredient)
     }
 
     for (const word of recipeTextFilter) {

@@ -3,31 +3,10 @@ import { recipes } from './recipes.js'
 export class RecipeService {
     constructor() {
         this.allRecipes = recipes
-        this.allIngredient = [
-            ...new Set(
-                this.allRecipes
-                    .flatMap((recipe) =>
-                        recipe.ingredients.map(
-                            (ingredient) => ingredient.ingredient
-                        )
-                    )
-                    .sort()
-            ),
-        ]
-        this.allAppliance = [
-            ...new Set(
-                this.allRecipes.flatMap((recipe) => recipe.appliance).sort()
-            ),
-        ]
-        this.allUstensils = [
-            ...new Set(
-                this.allRecipes.flatMap((recipe) => recipe.ustensils).sort()
-            ),
-        ]
         this.filteredRecipes = this.allRecipes.slice()
-        this.filteredIngredients = this.allIngredient.slice()
-        this.filteredUstensils = this.allUstensils.slice()
-        this.filteredAppliance = this.allAppliance.slice()
+        this.filteredIngredients = []
+        this.filteredAppliance = []
+        this.filteredUstensils = []
         this.selectedIngredients = []
         this.selectedUstensils = []
         this.selectedAppliance = []
@@ -35,29 +14,12 @@ export class RecipeService {
         this.ingredientTextFilter = ''
         this.ustensilTextFilter = ''
         this.applianceTextFilter = ''
-        this.hasFilter = false
     }
 
     // --- Get methods
-    getAllRecipes() {
-        return this.allRecipes
-    }
-
     getFilteredRecipes() {
         this.filterRecipes()
         return this.filteredRecipes
-    }
-
-    getAllIngredients() {
-        return this.allIngredient
-    }
-
-    getAllAppliance() {
-        return this.allAppliance
-    }
-
-    getAllUstensils() {
-        return this.allUstensils
     }
 
     getSelectedIngredients() {
@@ -89,23 +51,15 @@ export class RecipeService {
 
     // --- Add & Remove methods
     addSelectedIngredient(ingredient) {
-        this.selectedIngredients.push(
-            this.filteredIngredients[
-                this.filteredIngredients.indexOf(ingredient)
-            ]
-        )
+        this.selectedIngredients.push(ingredient.toLowerCase())
     }
 
     addSelectedUstensil(ustensil) {
-        this.selectedUstensils.push(
-            this.filteredUstensils[this.filteredUstensils.indexOf(ustensil)]
-        )
+        this.selectedUstensils.push(ustensil.toLowerCase())
     }
 
     addSelectedAppliance(appliance) {
-        this.selectedAppliance.push(
-            this.filteredAppliance[this.filteredAppliance.indexOf(appliance)]
-        )
+        this.selectedAppliance.push(appliance.toLowerCase())
     }
 
     removeSelectedIngredient(ingredient) {
@@ -168,9 +122,14 @@ export class RecipeService {
         for (const recipe of this.allRecipes) {
             let match = true
             const ingredientList = []
+            const ustensilList = []
 
             for (const ingredient of recipe.ingredients) {
-                ingredientList.push(ingredient.ingredient)
+                ingredientList.push(ingredient.ingredient.toLowerCase())
+            }
+
+            for (const ustensil of recipe.ustensils) {
+                ustensilList.push(ustensil.toLowerCase())
             }
 
             for (const word of this.recipeTextFilter) {
@@ -183,11 +142,12 @@ export class RecipeService {
             }
 
             for (const selectedAppliance of this.selectedAppliance) {
-                if (recipe.appliance !== selectedAppliance) match = false
+                if (recipe.appliance.toLowerCase() !== selectedAppliance)
+                    match = false
             }
 
             for (const selectedUstensil of this.selectedUstensils) {
-                if (!recipe.ustensils.includes(selectedUstensil)) match = false
+                if (!ustensilList.includes(selectedUstensil)) match = false
             }
 
             for (const selectedIngredient of this.selectedIngredients) {
@@ -213,8 +173,8 @@ export class RecipeService {
             ...new Set(
                 this.filteredRecipes
                     .flatMap((recipe) =>
-                        recipe.ingredients.map(
-                            (ingredient) => ingredient.ingredient
+                        recipe.ingredients.map((ingredient) =>
+                            ingredient.ingredient.toLowerCase()
                         )
                     )
                     .sort()
@@ -239,7 +199,11 @@ export class RecipeService {
         this.filteredUstensils = [
             ...new Set(
                 this.filteredRecipes
-                    .flatMap((recipe) => recipe.ustensils)
+                    .flatMap((recipe) =>
+                        recipe.ustensils.map((ustensil) =>
+                            ustensil.toLowerCase()
+                        )
+                    )
                     .sort()
             ),
         ]
@@ -258,7 +222,7 @@ export class RecipeService {
         this.filteredAppliance = [
             ...new Set(
                 this.filteredRecipes
-                    .flatMap((recipe) => recipe.appliance)
+                    .flatMap((recipe) => recipe.appliance.toLowerCase())
                     .sort()
             ),
         ]

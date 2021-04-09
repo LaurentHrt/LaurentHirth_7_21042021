@@ -278,7 +278,7 @@ export const recipes = [
                 unit: 'g',
             },
             {
-                ingredient: 'Beurre',
+                ingredient: 'beurre',
                 quantity: 120,
                 unit: 'g',
             },
