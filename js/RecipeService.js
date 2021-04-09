@@ -167,11 +167,17 @@ export class RecipeService {
 
         for (const recipe of this.allRecipes) {
             let match = true
+            const ingredientList = []
+
+            for (const ingredient of recipe.ingredients) {
+                ingredientList.push(ingredient.ingredient.toLowerCase())
+            }
 
             for (const word of this.recipeTextFilter) {
                 if (
                     !recipe.description.toLowerCase().includes(word) &&
-                    !recipe.name.toLowerCase().includes(word)
+                    !recipe.name.toLowerCase().includes(word) &&
+                    !ingredientList.join(' ').includes(word)
                 )
                     match = false
             }
@@ -182,11 +188,6 @@ export class RecipeService {
 
             for (const selectedUstensil of this.selectedUstensils) {
                 if (!recipe.ustensils.includes(selectedUstensil)) match = false
-            }
-
-            const ingredientList = []
-            for (const ingredient of recipe.ingredients) {
-                ingredientList.push(ingredient.ingredient)
             }
 
             for (const selectedIngredient of this.selectedIngredients) {
