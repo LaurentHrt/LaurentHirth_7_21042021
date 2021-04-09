@@ -170,7 +170,7 @@ export class RecipeService {
             const ingredientList = []
 
             for (const ingredient of recipe.ingredients) {
-                ingredientList.push(ingredient.ingredient.toLowerCase())
+                ingredientList.push(ingredient.ingredient)
             }
 
             for (const word of this.recipeTextFilter) {
