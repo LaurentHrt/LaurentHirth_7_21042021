@@ -8,9 +8,14 @@ let recipeTextFilter = ['citron']
 for (const recipe of allRecipes) {
     let match = true
     const ingredientList = []
+    const ustensilList = []
 
     for (const ingredient of recipe.ingredients) {
-        ingredientList.push(ingredient.ingredient)
+        ingredientList.push(ingredient.ingredient.toLowerCase())
+    }
+
+    for (const ustensil of recipe.ustensils) {
+        ustensilList.push(ustensil.toLowerCase())
     }
 
     for (const word of recipeTextFilter) {
