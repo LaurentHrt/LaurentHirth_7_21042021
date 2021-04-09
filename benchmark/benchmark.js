@@ -9,7 +9,7 @@ filteredRecipes = allRecipes.filter((recipe) => {
             recipe.name.toLowerCase().includes(word) ||
             recipe.ingredients
                 .map((ingredient) => ingredient.ingredient)
-                .join('')
+                .join(' ')
                 .toLowerCase()
                 .includes(word)
     )
